@@ -1,18 +1,15 @@
-import type { Data } from '@/models/model'
+import type { Data } from '@/models/model';
 
-const isProd = process.env.NODE_ENV === 'production' // build 시점
 const mapperBuildPath = (path: string) => {
-  const publicPrefix = '/wedding-invitation'
-  if (isProd) return publicPrefix + path
-  return path
-}
+  return path;
+};
 
 export default {
   meta: {
     title: 'Nguyễn Khẩn & Nguyễn Trang kết hôn',
     description:
       'Thứ Bảy, 20 tháng 12 năm 2025, lúc 2 giờ chiều\nBMK Wedding Convention - Astin Hall, Daejeon',
-    url: 'https://253eosam.github.io/wedding-invitation/',
+    url: 'https://khan-wedding-invitation.vercel.app',
     thumbnail: mapperBuildPath('/images/thumbnail.png'),
   },
   weddingDate: {
@@ -96,9 +93,7 @@ export default {
   images: {
     intro: mapperBuildPath('/images/intro.png'),
     main: mapperBuildPath('/images/main.jpg'),
-    invitation: ['/images/single-m.png', '/images/single-w.png'].map(
-      mapperBuildPath
-    ),
+    invitation: ['/images/single-m.png', '/images/single-w.png'].map(mapperBuildPath),
   },
   gallery: [
     {
@@ -153,4 +148,4 @@ export default {
     link: 'https://maps.google.com/?q=36.31983198404643,127.40508053198738',
   },
   bgm: mapperBuildPath('/music/wedding-bgm.mp3'),
-} satisfies Data
+} satisfies Data;
