@@ -1,8 +1,8 @@
-import type { Data } from '@/models/model';
+import type { Data } from '@/models/model'
 
 const mapperBuildPath = (path: string) => {
-  return path;
-};
+  return path
+}
 
 export default {
   meta: {
@@ -93,7 +93,9 @@ export default {
   images: {
     intro: mapperBuildPath('/images/intro.png'),
     main: mapperBuildPath('/images/main.jpg'),
-    invitation: ['/images/single-m.png', '/images/single-w.png'].map(mapperBuildPath),
+    invitation: ['/images/single-m.png', '/images/single-w.png'].map(
+      mapperBuildPath
+    ),
   },
   gallery: [
     {
@@ -148,4 +150,4 @@ export default {
     link: 'https://maps.google.com/?q=36.31983198404643,127.40508053198738',
   },
   bgm: mapperBuildPath('/music/wedding-bgm.mp3'),
-} satisfies Data;
+} satisfies Data
