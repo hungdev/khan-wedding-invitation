@@ -25,7 +25,7 @@ export default function MainSection({
     <section>
       <div className="flex flex-col items-center font-crimson gap-1 text-[#49413a]">
         <h1 className="text-[30px] tracking-[-0.2]">
-          {marryDate.format('YYYY / MM / DD')}
+          {marryDate.format('DD / MM / YYYY')}
         </h1>
         <p className="text-base uppercase tracking-[2px]">
           {marryDate.format('dddd')}
@@ -34,7 +34,7 @@ export default function MainSection({
       <div className="my-15">
         <Picture
           src={images.main}
-          alt="메인 이미지"
+          alt="Ảnh chính"
           className="rounded-2xl w-[425px] h-[585px] object-cover object-bottom"
           width={425}
           height={585}

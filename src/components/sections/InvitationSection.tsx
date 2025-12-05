@@ -16,8 +16,8 @@ export default function IntroSection({
 }) {
   const [open, setOpen] = useState(false)
   const contents = [
-    '평생 서로 귀하게 여기며\n첫 마음 그대로 존중하고\n배려하며 살겠습니다.',
-    '오로지 믿음과 사랑을 약속하는 날\n오셔서 축복해 주시면 더 없는 기쁨으로\n간직하겠습니다.',
+    '“Hôn nhân là chuyện cả đời,\nYêu người vừa ý, cưới người mình thương..."',
+    'Trong ngày tràn đầy hạnh phúc và yêu thương,\nchúng tôi thật hạnh phúc khi được đón tiếp \nvà nhận những lời chúc phúc chân thành từ quý vị.',
   ]
   const groomSelf = groomFamily.find(({ relation }) => relation === 'self')
   const groomFather = groomFamily.find(({ relation }) => relation === 'father')
@@ -28,7 +28,7 @@ export default function IntroSection({
 
   return (
     <Section.Container className="flex flex-col items-center">
-      <Section.Title kor="소중한 분들을 초대합니다." eng="INVITATION" />
+      <Section.Title kor="Trân trọng kính mời quý khách" eng="INVITATION" />
       <div className="flex flex-col gap-y-10 whitespace-pre my-9 font-gowun text-[#585858] text-[15px] text-center leading-[30px]">
         {contents.map((content) => (
           <Section.Typography key={content}>{content}</Section.Typography>
@@ -55,28 +55,64 @@ export default function IntroSection({
           />
         </div>
       </div>
-      <div className="font-gowun mt-6 mb-4 text-[#444]">
-        <p className="flex gap-0.5">
-          {groomFather?.name}
-          <span className="text-[#777]">·</span>
-          {groomMother?.name}
-          <span className="text-[#777] mr-1">의 장남 </span>
-          {groomSelf?.name}
-        </p>
-        <p className="flex gap-0.5">
-          {brideFather?.name}
-          <span className="text-[#777]">·</span>
-          {brideMother?.name}
-          <span className="text-[#777] mr-1">의 차녀 </span>
-          {brideSelf?.name}
-        </p>
+      <div className="w-full py-10 mt-6 mb-4 rounded-xl">
+        <div className="flex justify-center items-start gap-4 px-6">
+          {/* Nhà Trai */}
+          <div className="flex-1 flex flex-col items-center text-center space-y-2">
+            <h3 className="text-sm font-bold tracking-[3px] mb-2 text-[#333]">
+              NHÀ TRAI
+            </h3>
+            <p className="text-[13px] font-bold tracking-wider text-[#444]">
+              ÔNG {groomFather?.name?.toUpperCase()}
+            </p>
+            <p className="text-[13px] font-bold tracking-wider text-[#444]">
+              BÀ {groomMother?.name?.toUpperCase()}
+            </p>
+            <div className="pt-4">
+              <p className="text-sm text-[#666]">Chú Rể</p>
+              <p className="text-2xl font-ephesis mt-1 text-[#333]">
+                {groomSelf?.name}
+              </p>
+            </div>
+          </div>
+
+          {/* Heart Icon */}
+          <div className="flex items-center justify-center px-2 pt-8">
+            <Section.Image
+              src="/images/heart.webp"
+              alt="Heart"
+              width={60}
+              height={60}
+              className="w-[50px] h-[50px] animate-breathing"
+            />
+          </div>
+
+          {/* Nhà Gái */}
+          <div className="flex-1 flex flex-col items-center text-center space-y-2">
+            <h3 className="text-sm font-bold tracking-[3px] mb-2 text-[#333]">
+              NHÀ GÁI
+            </h3>
+            <p className="text-[13px] font-bold tracking-wider text-[#444]">
+              ÔNG {brideFather?.name?.toUpperCase()}
+            </p>
+            <p className="text-[13px] font-bold tracking-wider text-[#444]">
+              BÀ {brideMother?.name?.toUpperCase()}
+            </p>
+            <div className="pt-4">
+              <p className="text-sm text-[#666]">Cô Dâu</p>
+              <p className="text-2xl font-ephesis mt-1 text-[#333]">
+                {brideSelf?.name}
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
       <Section.Button
         onClick={() => setOpen(true)}
         className="flex items-center gap-x-2"
       >
         <IoCall size={16} />
-        연락하기
+        Liên hệ
       </Section.Button>
 
       <Section.Dialog isOpen={open} onClose={() => setOpen(false)}>
@@ -86,19 +122,19 @@ export default function IntroSection({
               CONTACT
             </p>
             <p className="font-gowun text-lg font-medium tracking-[2px]">
-              연락하기
+              Liên hệ
             </p>
           </h2>
           <div className="mt-15 font-gowun text-sm">
             <p className="border-b-1 border-dotted border-gray-400 pb-2.5 w-[300px] text-start">
-              신랑측
+              Phía chú rể
               <span className="text-[#999] text-xs align-bottom ml-1 tracking-[3px]">
                 GROOM
               </span>
             </p>
             <ul>
               <li className="my-5 flex">
-                <p className="flex-1/3 text-start ">신랑</p>
+                <p className="flex-1/3 text-start ">Chú rể</p>
                 <p className="flex-1/3 text-[15px] text-white">
                   {groomSelf?.name}
                 </p>
@@ -112,7 +148,7 @@ export default function IntroSection({
                 </div>
               </li>
               <li className="my-5 flex">
-                <p className="flex-1/3 text-start ">신랑 아버지</p>
+                <p className="flex-1/3 text-start ">Cha chú rể</p>
                 <p className="flex-1/3 text-[15px] text-white">
                   {groomFather?.name}
                 </p>
@@ -126,7 +162,7 @@ export default function IntroSection({
                 </div>
               </li>
               <li className="my-5 flex">
-                <p className="flex-1/3 text-start ">신랑 어머니</p>
+                <p className="flex-1/3 text-start ">Mẹ chú rể</p>
                 <p className="flex-1/3 text-[15px] text-white">
                   {groomMother?.name}
                 </p>
@@ -143,14 +179,14 @@ export default function IntroSection({
           </div>
           <div className="mt-15 font-gowun text-sm">
             <p className="border-b-1 border-dotted border-gray-400 pb-2.5 w-[300px] text-start">
-              신부측
+              Phía cô dâu
               <span className="text-[#999] text-xs align-bottom ml-1 tracking-[3px]">
                 BRIDE
               </span>
             </p>
             <ul>
               <li className="my-5 flex">
-                <p className="flex-1/3 text-start ">신부</p>
+                <p className="flex-1/3 text-start ">Cô dâu</p>
                 <p className="flex-1/3 text-[15px] text-white">
                   {brideSelf?.name}
                 </p>
@@ -164,7 +200,7 @@ export default function IntroSection({
                 </div>
               </li>
               <li className="my-5 flex">
-                <p className="flex-1/3 text-start ">신부 아버지</p>
+                <p className="flex-1/3 text-start ">Cha cô dâu</p>
                 <p className="flex-1/3 text-[15px] text-white">
                   {brideFather?.name}
                 </p>
@@ -178,7 +214,7 @@ export default function IntroSection({
                 </div>
               </li>
               <li className="my-5 flex">
-                <p className="flex-1/3 text-start ">신부 어머니</p>
+                <p className="flex-1/3 text-start ">Mẹ cô dâu</p>
                 <p className="flex-1/3 text-[15px] text-white">
                   {brideMother?.name}
                 </p>

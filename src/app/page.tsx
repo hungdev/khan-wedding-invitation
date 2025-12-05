@@ -5,6 +5,7 @@ import GallerySection from '@/components/sections/GallerySection'
 import CalendarSection from '@/components/sections/CalendarSection'
 import MapSection from '@/components/sections/MapSection'
 import AccountSection from '@/components/sections/AccountSection'
+import ThankYouSection from '@/components/sections/ThankYouSection'
 import { data } from '@/models'
 import { useBGMPlayer } from '@/utils/useBGMPlayer'
 import { FaCirclePlay } from 'react-icons/fa6'
@@ -88,7 +89,7 @@ export default function Home() {
         onClick={() => toggle()}
         className="flex justify-end items-center gap-1 mr-4"
       >
-        BGM 재생 {isPlaying ? <FaCirclePlay /> : <FaRegPlayCircle />}
+        Nhạc nền {isPlaying ? <FaCirclePlay /> : <FaRegPlayCircle />}
       </div>
       <div className="flex flex-col gap-y-25 py-15">
         <MainSection {...data} />
@@ -105,6 +106,7 @@ export default function Home() {
         />
         <MapSection {...map} />
         <AccountSection families={families} />
+        <ThankYouSection />
       </div>
     </>
   )

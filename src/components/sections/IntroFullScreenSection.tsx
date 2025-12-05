@@ -12,7 +12,7 @@ export default function IntroFullScreenSection({
   onClick: () => void
 }) {
   const fullText = 'Wedding day'
-  const nextText = '주희 ♡ 성준'
+  const nextText = 'Nguyễn Khẩn ♡ Nguyễn Trang'
   const [currentIndex, setCurrentIndex] = useState(0)
   const [displayRightIcon, setDisplayRightIcon] = useState(false)
 
@@ -56,7 +56,7 @@ export default function IntroFullScreenSection({
             initial={{ opacity: 0 }}
             animate={{ opacity: displayRightIcon ? 1 : 0 }}
             transition={{ duration: 3 }}
-            className={classNames('mt-4 text-2xl font-gowun')}
+            className={classNames('mt-4 text-2xl font-gowun whitespace-nowrap')}
           >
             {nextText}
           </motion.span>

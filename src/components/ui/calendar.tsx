@@ -2,7 +2,7 @@ import type { Dayjs } from 'dayjs'
 import classNames from 'classnames'
 import { memo } from 'react'
 
-const weekdays = ['일', '월', '화', '수', '목', '금', '토']
+const weekdays = ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7']
 
 export default memo(function Calendar({ dday }: { dday: Dayjs }) {
   const startOfMonth = dday.startOf('month')

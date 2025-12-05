@@ -1,22 +1,7 @@
 import { MapInfo } from '@/models/model'
-import { useEffect, useRef, useState } from 'react'
 import { Section } from '../Section'
 import Link from 'next/link'
-import { SiNaver } from 'react-icons/si'
-import { MdLock, MdLockOpen } from 'react-icons/md'
-
-const NAVER_CLIENT_ID = process.env.NEXT_PUBLIC_NAVER_CLIENT_ID
-
-const loadNaverScript = (): Promise<void> => {
-  return new Promise((resolve) => {
-    const script = document.createElement('script')
-    script.id = 'naver-map-script'
-    script.src = `https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=${NAVER_CLIENT_ID}&callback=CALLBACK_FUNCTION"`
-    script.async = true
-    script.onload = () => resolve()
-    document.head.appendChild(script)
-  })
-}
+import { SiGooglemaps } from 'react-icons/si'
 
 export default function MapSection({
   position,
@@ -25,57 +10,30 @@ export default function MapSection({
   addressDetail,
 }: MapInfo) {
   const { latitude, longitude } = position
-  const mapRef = useRef<HTMLDivElement>(null)
-  const [isMapInteractive, setIsMapInteractive] = useState(false)
 
-  useEffect(() => {
-    loadNaverScript().then(() => {
-      const { naver } = window
-      if (!naver || !mapRef.current) return
-
-      const map = new naver.maps.Map(mapRef.current, {
-        center: new naver.maps.LatLng(latitude, longitude),
-        zoom: 16,
-        draggable: isMapInteractive,
-        scrollWheel: isMapInteractive,
-        keyboardShortcuts: isMapInteractive,
-        disableDoubleClickZoom: !isMapInteractive,
-        disableTwoFingerTapZoom: !isMapInteractive,
-      })
-
-      new naver.maps.Marker({
-        map,
-        position: new naver.maps.LatLng(latitude, longitude),
-        clickable: false,
-      })
-    })
-  }, [latitude, longitude, isMapInteractive])
+  // Google Maps embed URL - không cần API key
+  const googleMapsEmbedUrl = `https://maps.google.com/maps?q=${latitude},${longitude}&t=&z=16&ie=UTF8&iwloc=&output=embed`
 
   return (
     <Section.Container className="flex flex-col gap-y-6">
-      <Section.Title kor="오시는 길" eng="LOCATION" />
+      <Section.Title kor="Chỉ đường" eng="LOCATION" />
       <div>
         <Section.Typography className="text-[20px] text-black">
           {addressDetail}
         </Section.Typography>
         <Section.Typography>{address}</Section.Typography>
       </div>
-      <div className="relative">
-        <div ref={mapRef} style={{ width: '100%', height: '400px' }} />
-        {!isMapInteractive && (
-          <div className="absolute inset-0 bg-transparent pointer-events-none" />
-        )}
-        <button
-          onClick={() => setIsMapInteractive(!isMapInteractive)}
-          className="absolute top-2 right-2 bg-white rounded-full p-2 shadow-lg hover:bg-gray-50 transition-colors z-10"
-          aria-label={isMapInteractive ? '지도 잠금' : '지도 잠금 해제'}
-        >
-          {isMapInteractive ? (
-            <MdLockOpen className="w-5 h-5 text-gray-700" />
-          ) : (
-            <MdLock className="w-5 h-5 text-gray-700" />
-          )}
-        </button>
+      <div className="relative w-full h-[400px] rounded-lg overflow-hidden">
+        <iframe
+          src={googleMapsEmbedUrl}
+          width="100%"
+          height="100%"
+          style={{ border: 0 }}
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          title="Google Maps"
+        />
       </div>
       <Link
         href={link}
@@ -83,43 +41,44 @@ export default function MapSection({
         rel="noopener noreferrer"
         className="w-fit mx-auto inline-block"
       >
-        <Section.Button className="flex items-center gap-1">
-          <SiNaver className="inline-block" />
-          네이버지도
+        <Section.Button className="flex items-center gap-1 border-primary">
+          <SiGooglemaps className="inline-block" />
+          Xem trên Google Maps
         </Section.Button>
       </Link>
       <div className="text-center flex flex-col gap-6 mx-4 break-keep mt-2">
         <div className="flex flex-col gap-2">
-          <p>버스이용시</p>
+          <p>Đi xe buýt</p>
           <Section.Typography>
-            119번, 201번, 202번, 311번, 314번, 513번, 608번, 613번, 618번,
-            200번, 612번, 급행1, 2002, 33번
+            Tuyến số: 119, 201, 202, 311, 314, 513, 608, 613, 618, 200, 612,
+            Nhanh 1, 2002, 33
           </Section.Typography>
-          <Section.Typography>* 서대전 내거리에서 하차</Section.Typography>
+          <Section.Typography>* Xuống tại ngã tư Seodaejeon</Section.Typography>
         </div>
         <div>
-          <p>지하철이용시</p>
+          <p>Đi tàu điện ngầm</p>
           <Section.Typography>
-            서대전네거리역 2번출구에서 도보10분 좌측
-          </Section.Typography>
-        </div>
-        <div>
-          <p>택시&자가용이용시</p>
-          <Section.Typography>
-            네비게이션에 BMK웨딩홀 입력후 주차장이용
+            Từ lối ra số 2 ga Seodaejeon Nageori, đi bộ 10 phút về phía bên trái
           </Section.Typography>
         </div>
         <div>
-          <p>신랑측 버스대절 (대구 출발)</p>
+          <p>Đi taxi & Tự lái xe</p>
           <Section.Typography>
-            • (대구 북구 칠곡) 북구 어울아트센터 10시
-            <br />• (대구) 용산역5번출구 성서홈플러스 10시30분
+            Nhập &quot;BMK Wedding Hall&quot; vào GPS và sử dụng bãi đỗ xe
+          </Section.Typography>
+        </div>
+        <div>
+          <p>Xe buýt riêng phía chú rể (Khởi hành từ Daegu)</p>
+          <Section.Typography>
+            • (Daegu Buk-gu Chilgok) Trung tâm Nghệ thuật Buk-gu Eoul - 10:00
+            <br />• (Daegu) Lối ra số 5 ga Yongsan, Home Plus Seoseo - 10:30
             <br />
-            <br />※ 대절버스 이용하시는 분은 인원파악을 위해 신랑측으로 연락
-            부탁드립니다.
+            <br />※ Quý khách sử dụng xe buýt riêng vui lòng liên hệ phía chú rể
+            để xác nhận số lượng.
             <br />
             <span className="underline underline-offset-2">
-              ※ 새천년관광(빨간색), 장병화 기사님 차량번호: 대구70바3511
+              ※ Xe Saecheonnyeon Tourism (màu đỏ), Tài xế Jang Byeong-hwa, Biển
+              số: Daegu 70 Ba 3511
             </span>
           </Section.Typography>
         </div>

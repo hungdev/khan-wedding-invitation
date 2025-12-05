@@ -9,16 +9,16 @@ const mapperBuildPath = (path: string) => {
 
 export default {
   meta: {
-    title: '이성준, 김주희 결혼합니다',
+    title: 'Nguyễn Khẩn & Nguyễn Trang kết hôn',
     description:
-      '2025년 11월 9일 일요일 오후 2시\n대전 BMK 웨딩컨벤션 아스틴홀',
+      'Thứ Bảy, 20 tháng 12 năm 2025, lúc 2 giờ chiều\nBMK Wedding Convention - Astin Hall, Daejeon',
     url: 'https://253eosam.github.io/wedding-invitation/',
     thumbnail: mapperBuildPath('/images/thumbnail.png'),
   },
   weddingDate: {
     year: 2025,
-    month: 11,
-    day: 9,
+    month: 12,
+    day: 20,
     time: {
       amPm: 'pm',
       hour: 2,
@@ -28,13 +28,13 @@ export default {
   families: [
     {
       gender: 'groom',
-      name: '이성준',
+      name: 'Nguyễn Khẩn',
       relation: 'self',
       phone: '01082623777',
       account: {
         bank: '신한',
         accountNumber: '110-414-698540',
-        bankIdentity: '이성준',
+        bankIdentity: 'Nguyễn Khẩn',
       },
     },
     {
@@ -61,13 +61,13 @@ export default {
     },
     {
       gender: 'bride',
-      name: '김주희',
+      name: 'Nguyễn Trang',
       relation: 'self',
       phone: '010-6412-3317',
       account: {
         bank: '우리',
         accountNumber: '1002-160-599486',
-        bankIdentity: '김주희',
+        bankIdentity: 'Nguyễn Trang',
       },
     },
     {
@@ -150,7 +150,7 @@ export default {
       latitude: 36.31983198404643,
       longitude: 127.40508053198738,
     },
-    link: 'https://naver.me/58NdrkXq',
+    link: 'https://maps.google.com/?q=36.31983198404643,127.40508053198738',
   },
   bgm: mapperBuildPath('/music/wedding-bgm.mp3'),
 } satisfies Data

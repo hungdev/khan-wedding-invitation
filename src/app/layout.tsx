@@ -1,5 +1,10 @@
 import type { Metadata, Viewport } from 'next'
-import { Crimson_Pro, Gowun_Dodum, Noto_Sans_KR } from 'next/font/google'
+import {
+  Crimson_Pro,
+  Gowun_Dodum,
+  Noto_Sans_KR,
+  Ephesis,
+} from 'next/font/google'
 import '@/app/globals.css'
 import { data } from '@/models'
 
@@ -23,6 +28,13 @@ const NotoSansKR = Noto_Sans_KR({
   display: 'swap',
 })
 
+const EphesisFont = Ephesis({
+  variable: '--font-ephesis',
+  subsets: ['latin'],
+  weight: '400',
+  display: 'swap',
+})
+
 export const metadata: Metadata = {
   title: data.meta.title,
   description: data.meta.description,
@@ -43,7 +55,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="ko">
+    <html lang="vi">
       <head>
         <link
           rel="apple-touch-icon"
@@ -77,7 +89,7 @@ export default function RootLayout({
         <meta name="twitter:image" content={data.meta.thumbnail} />
       </head>
       <body
-        className={`${CrimsonPro.variable} ${GowunDodum.variable} ${NotoSansKR.variable} antialiased bg-[#efefef] overflow-hidden`}
+        className={`${CrimsonPro.variable} ${GowunDodum.variable} ${NotoSansKR.variable} ${EphesisFont.variable} antialiased bg-[#efefef] overflow-hidden`}
       >
         <main
           className="max-w-[425px] w-full bg-[#fafafa] mx-auto relative"

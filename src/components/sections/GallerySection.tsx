@@ -5,6 +5,7 @@ import { Gallery } from '@/models/model'
 import Picture from '../ui/picture'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination, Keyboard } from 'swiper/modules'
+import { motion } from 'framer-motion'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
@@ -29,31 +30,69 @@ export default function GalleryMasonry({ images }: { images: Gallery[] }) {
     }
   }, [selectedImg])
 
+  // Animation variants cho container
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.08,
+        delayChildren: 0.1,
+      },
+    },
+  }
+
+  // Animation variants cho mỗi ảnh
+  const itemVariants = {
+    hidden: {
+      opacity: 0,
+      scale: 0.85,
+      y: 15,
+    },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+    },
+  }
+
   return (
     <Section.Container fadeUp className="px-2">
       <h1 className="text-center mb-7.5">
         <p className="font-crimson text-[13px] text-[#f79e9e] tracking-[3px] opacity-60">
           GALLERY
         </p>
-        <p className="text-[#f79e9e] text-xl mt-1 font-gowun">우리의 순간</p>
+        <p className="text-[#f79e9e] text-xl mt-1 font-gowun">Album ảnh cưới</p>
       </h1>
 
-      <div className="grid grid-cols-3 gap-1.5">
+      <motion.div
+        className="grid grid-cols-3 gap-1.5"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.1 }}
+      >
         {images.map((image, imageIndex) => (
-          <Picture
-            onImageClick={() => handleImageClick(image.src, imageIndex)}
+          <motion.div
             key={image.src}
-            src={image.src}
-            alt={`갤러리의 ${imageIndex + 1}번째 웨딩 사진`}
-            width={125}
-            height={125}
-            className={classNames(
-              'w-[125px] h-[125px] object-cover rounded',
-              image.position
-            )}
-          />
+            variants={itemVariants}
+            whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ duration: 0.4 }}
+          >
+            <Picture
+              onImageClick={() => handleImageClick(image.src, imageIndex)}
+              src={image.src}
+              alt={`Ảnh cưới thứ ${imageIndex + 1} trong bộ sưu tập`}
+              width={125}
+              height={125}
+              className={classNames(
+                'w-[125px] h-[125px] object-cover rounded cursor-pointer',
+                image.position
+              )}
+            />
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
 
       <Section.Dialog isOpen={Boolean(selectedImg)} onClose={handleClose}>
         <div
@@ -114,7 +153,7 @@ export default function GalleryMasonry({ images }: { images: Gallery[] }) {
               >
                 <Picture
                   src={image.src}
-                  alt={`갤러리 ${index + 1}번째 이미지`}
+                  alt={`Ảnh thứ ${index + 1} trong bộ sưu tập`}
                   className="h-[100vh] w-full object-contain"
                 />
               </SwiperSlide>

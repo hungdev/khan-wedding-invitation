@@ -1,5 +1,5 @@
 import dayjs from 'dayjs'
-import 'dayjs/locale/ko'
+import 'dayjs/locale/vi'
 
 import Calendar from '../ui/calendar'
 import classNames from 'classnames'
@@ -12,8 +12,8 @@ export default function CalendarSection({
   month,
   day,
   time,
-  groom = '신랑',
-  bride = '신부',
+  groom = 'Chú rể',
+  bride = 'Cô dâu',
 }: WeddingDate & { [person in 'groom' | 'bride']?: string }) {
   const marryDate = dayjs(
     `${year}/${month}/${day} ${time.hour}:${time.minute}`,
@@ -34,12 +34,12 @@ export default function CalendarSection({
 
   return (
     <Section.Container className="text-center flex flex-col gap-y-9">
-      <Section.Title kor="날짜" eng="CALENDAR" />
+      <Section.Title kor="Ngày cưới" eng="CALENDAR" />
       <div className="text-secondary">
-        <h2 className="text-2xl">{marryDate.format('YYYY.MM.DD')}</h2>
+        <h2 className="text-2xl">{marryDate.format('DD.MM.YYYY')}</h2>
         <p className="text-medium mt-2">
-          {marryDate.locale('ko').format('dddd')} {time.amPm.toUpperCase()}{' '}
-          {marryDate.format('hh시 mm분')}
+          {marryDate.locale('vi').format('dddd')} {time.amPm.toUpperCase()}{' '}
+          {marryDate.format('hh:mm')}
         </p>
       </div>
       <div className="w-full">
@@ -54,9 +54,11 @@ export default function CalendarSection({
         <DateUnit />
         <DateUnit value={diffSeconds.toString()} name="SEC" />
       </div>
-      <p className="mt-4 font-bold text-[#666666]">
-        {groom}, {bride}의 결혼식이{' '}
-        <strong className="text-highlight">{diff}</strong>일 남았습니다.
+      <p className="mt-4 font-bold text-[#666666] px-4">
+        Còn <strong className="text-highlight">{diff}</strong> ngày nữa đến đám
+        cưới của
+        <br />
+        {groom} và {bride}.
       </p>
     </Section.Container>
   )

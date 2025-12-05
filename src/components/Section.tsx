@@ -117,7 +117,7 @@ const SectionDialog = ({
         <button
           className="absolute top-4 right-4 z-50 w-11 h-11 text-[#ccc] text-2xl  bg-opacity-30 rounded-full cursor-pointer"
           tabIndex={0}
-          aria-label="닫기"
+          aria-label="Đóng"
           onClick={(e) => {
             e.stopPropagation()
             onClose()
