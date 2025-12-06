@@ -6,7 +6,7 @@ const mapperBuildPath = (path: string) => {
 
 export default {
   meta: {
-    title: 'Nguyễn Khẩn & Nguyễn Trang kết hôn',
+    title: 'Nguyễn Khẩn & Nguyễn Trang wedding invitation',
     description:
       'Thứ Bảy, 20 tháng 12 năm 2025, lúc 5 giờ chiều\nChủ nhật, 21 tháng 12 năm 2025, lúc 8 giờ 30 phút sáng\nTại Thôn Đụn, Xã Nam Sách, Hải Phòng',
     url: 'https://khan-wedding-invitation.vercel.app',
@@ -104,44 +104,44 @@ export default {
   ],
   images: {
     intro: mapperBuildPath('/images/intro.png'),
-    main: mapperBuildPath('/images/main.jpg'),
+    main: mapperBuildPath('/images/main.png'),
     invitation: ['/images/single-m.png', '/images/single-w.png'].map(mapperBuildPath),
   },
   gallery: [
     {
-      src: '/images/YJH_0056.jpg',
+      src: '/images/ZAUK0658 Medium.png',
       position: 'object-center',
     },
     {
-      src: '/images/YJH_0267.jpg',
+      src: '/images/ZAUK1420 Medium.png',
       position: 'object-center',
     },
     {
-      src: '/images/YJH_0800.jpg',
+      src: '/images/ZAUK1579 Medium.png',
       position: 'object-bottom',
     },
     {
-      src: '/images/YJH_0360.jpg',
+      src: '/images/ZAUK1081 Medium.png',
       position: 'object-center',
     },
     {
-      src: '/images/YJH_0590.jpg',
+      src: '/images/ZAUK1228 Medium.png',
       position: 'object-bottom',
     },
     {
-      src: '/images/YJH_9938.jpg',
+      src: '/images/ZAUK1275 Medium.png',
       position: 'object-center',
     },
     {
-      src: '/images/YJH_0720.jpg',
+      src: '/images/ZAUK0993 Medium.png',
       position: 'object-center',
     },
     {
-      src: '/images/YJH_0788.jpg',
+      src: '/images/ZAUK1291 Medium.png',
       position: 'object-bottom',
     },
     {
-      src: '/images/YJH_0459.jpg',
+      src: '/images/ZAUK1280 Medium.png',
       position: 'object-center',
     },
   ].map(({ position, src }) => ({
