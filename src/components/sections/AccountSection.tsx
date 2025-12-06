@@ -50,7 +50,7 @@ export default function AccountSection({ families }: { families: Person[] }) {
                 >
                   <div className="flex flex-col gap-x-2 cursor-pointer flex-1">
                     <div className="flex gap-x-2">
-                      <p className="">{name}</p>
+                      <p className="">Nguyễn Văn Khẩn</p>
                     </div>
                     <div className="flex flex-row gap-x-2">
                       <p className="">{account.bank}</p>
