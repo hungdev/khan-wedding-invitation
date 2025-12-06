@@ -70,7 +70,7 @@ export default function IntroSection({
             </p>
             <div className="pt-4">
               <p className="text-sm text-[#666]">Chú Rể</p>
-              <p className="text-2xl font-ephesis mt-1 text-[#333]">
+              <p className="text-xl sm:text-2xl font-ephesis mt-1 text-[#333] whitespace-nowrap">
                 {groomSelf?.name}
               </p>
             </div>
@@ -100,7 +100,7 @@ export default function IntroSection({
             </p>
             <div className="pt-4">
               <p className="text-sm text-[#666]">Cô Dâu</p>
-              <p className="text-2xl font-ephesis mt-1 text-[#333]">
+              <p className="text-xl sm:text-2xl font-ephesis mt-1 text-[#333] whitespace-nowrap">
                 {brideSelf?.name}
               </p>
             </div>
