@@ -8,8 +8,6 @@ import AccountSection from '@/components/sections/AccountSection'
 import ThankYouSection from '@/components/sections/ThankYouSection'
 import { data } from '@/models'
 import { useBGMPlayer } from '@/utils/useBGMPlayer'
-import { FaCirclePlay } from 'react-icons/fa6'
-import { FaRegPlayCircle } from 'react-icons/fa'
 import IntroFullScreenSection from '@/components/sections/IntroFullScreenSection'
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
@@ -85,12 +83,20 @@ export default function Home() {
           </motion.div>
         )}
       </AnimatePresence>
-      <div
-        onClick={() => toggle()}
-        className="flex justify-end items-center gap-1 mr-4"
-      >
-        Nhạc nền {isPlaying ? <FaCirclePlay /> : <FaRegPlayCircle />}
-      </div>
+{!showIntro && (
+        <button
+          onClick={() => toggle()}
+          className="fixed left-4 bottom-4 z-50 w-16 h-16 cursor-pointer transition-all hover:scale-110 rounded-full shadow-lg flex items-center justify-center p-3"
+          style={{ backgroundColor: 'rgba(255, 255, 255, 0.3)' }}
+          aria-label={isPlaying ? 'Tắt nhạc' : 'Bật nhạc'}
+        >
+          <img
+            src={isPlaying ? '/images/music-on.gif' : '/images/music-off.png'}
+            alt={isPlaying ? 'Tắt nhạc' : 'Bật nhạc'}
+            className="w-full h-full object-contain"
+          />
+        </button>
+      )}
       <div className="flex flex-col gap-y-25 py-15">
         <MainSection {...data} />
         <InvitationSection
