@@ -1,6 +1,6 @@
 export interface Data {
   meta: Meta
-  weddingDate: WeddingDate
+  weddingDates: WeddingDate[]
   families: Person[]
   images: OtherSectionImage
   gallery: Gallery[]

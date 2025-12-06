@@ -15,7 +15,7 @@ import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 
 export default function Home() {
-  const { weddingDate, families, gallery, map, images, bgm } = data
+  const { weddingDates, families, gallery, map, images, bgm } = data
   const [showIntro, setShowIntro] = useState(true)
   const [mounted, setMounted] = useState(false)
   const { toggle, isPlaying, start } = useBGMPlayer(bgm, false)
@@ -100,7 +100,7 @@ export default function Home() {
         />
         <GallerySection images={gallery} />
         <CalendarSection
-          {...weddingDate}
+          weddingDates={weddingDates}
           groom={groom?.name}
           bride={bride?.name}
         />

@@ -8,18 +8,14 @@ import { WeddingDate } from '@/models/model'
 import { Section } from '../Section'
 
 export default function CalendarSection({
-  year,
-  month,
-  day,
-  time,
+  weddingDates,
   groom = 'Chú rể',
   bride = 'Cô dâu',
-}: WeddingDate & { [person in 'groom' | 'bride']?: string }) {
-  const marryDate = dayjs(
-    `${year}/${month}/${day} ${time.hour}:${time.minute}`,
-    'YYYY/MM/DD hh:mm'
-  )
-
+}: {
+  weddingDates: WeddingDate[]
+  groom?: string
+  bride?: string
+}) {
   const [now, setNow] = useState(dayjs())
   useEffect(() => {
     const interval = setInterval(() => {
@@ -27,23 +23,43 @@ export default function CalendarSection({
     }, 1000)
     return () => clearInterval(interval)
   }, [])
-  const diff = marryDate.diff(now, 'day')
-  const diffHours = marryDate.diff(now, 'hour') % 24
-  const diffMinutes = marryDate.diff(now, 'minute') % 60
-  const diffSeconds = marryDate.diff(now, 'second') % 60
+
+  // Lấy buổi tiệc thứ hai (ngày 21) để đếm ngược chính
+  const firstWedding = weddingDates[1]
+  const { year, month, day, time } = firstWedding
+  const firstDate = dayjs(
+    `${year}/${month}/${day} ${time.hour}:${time.minute}`,
+    'YYYY/MM/DD hh:mm'
+  )
+
+  const diff = firstDate.diff(now, 'day')
+  const diffHours = firstDate.diff(now, 'hour') % 24
+  const diffMinutes = firstDate.diff(now, 'minute') % 60
+  const diffSeconds = firstDate.diff(now, 'second') % 60
 
   return (
     <Section.Container className="text-center flex flex-col gap-y-9">
       <Section.Title kor="Ngày cưới" eng="CALENDAR" />
-      <div className="text-secondary">
-        <h2 className="text-2xl">{marryDate.format('DD.MM.YYYY')}</h2>
-        <p className="text-medium mt-2">
-          {marryDate.locale('vi').format('dddd')} {time.amPm.toUpperCase()}{' '}
-          {marryDate.format('hh:mm')}
-        </p>
+      <div className="text-secondary flex flex-col gap-4">
+        {weddingDates.map((weddingDate, index) => {
+          const { year, month, day, time } = weddingDate
+          const marryDate = dayjs(
+            `${year}/${month}/${day} ${time.hour}:${time.minute}`,
+            'YYYY/MM/DD hh:mm'
+          )
+          return (
+            <div key={index}>
+              <h2 className="text-2xl">{marryDate.format('DD.MM.YYYY')}</h2>
+              <p className="text-medium mt-2">
+                {marryDate.locale('vi').format('dddd')} {marryDate.format('hh:mm')}{' '}
+                {time.amPm.toUpperCase()}
+              </p>
+            </div>
+          )
+        })}
       </div>
       <div className="w-full">
-        <Calendar dday={marryDate} />
+        <Calendar dday={firstDate} />
       </div>
       <div className="flex flex-row justify-center gap-0.5">
         <DateUnit value={diff.toString()} name="DAYS" />

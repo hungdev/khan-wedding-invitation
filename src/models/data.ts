@@ -1,101 +1,111 @@
-import type { Data } from '@/models/model'
+import type { Data } from '@/models/model';
 
 const mapperBuildPath = (path: string) => {
-  return path
-}
+  return path;
+};
 
 export default {
   meta: {
     title: 'Nguyễn Khẩn & Nguyễn Trang kết hôn',
     description:
-      'Thứ Bảy, 20 tháng 12 năm 2025, lúc 2 giờ chiều\nBMK Wedding Convention - Astin Hall, Daejeon',
+      'Thứ Bảy, 20 tháng 12 năm 2025, lúc 5 giờ chiều\nChủ nhật, 21 tháng 12 năm 2025, lúc 8 giờ 30 phút sáng\nTại Thôn Đụn, Xã Nam Sách, Hải Phòng',
     url: 'https://khan-wedding-invitation.vercel.app',
     thumbnail: mapperBuildPath('/images/thumbnail.png'),
   },
-  weddingDate: {
-    year: 2025,
-    month: 12,
-    day: 20,
-    time: {
-      amPm: 'pm',
-      hour: 2,
-      minute: 0,
+  weddingDates: [
+    {
+      year: 2025,
+      month: 12,
+      day: 20,
+      time: {
+        amPm: 'pm',
+        hour: 5,
+        minute: 0,
+      },
     },
-  },
+    {
+      year: 2025,
+      month: 12,
+      day: 21,
+      time: {
+        amPm: 'am',
+        hour: 8,
+        minute: 30,
+      },
+    },
+  ],
   families: [
     {
       gender: 'groom',
       name: 'Nguyễn Khẩn',
       relation: 'self',
-      phone: '01082623777',
+      phone: '0398128389',
       account: {
-        bank: '신한',
-        accountNumber: '110-414-698540',
-        bankIdentity: 'Nguyễn Khẩn',
+        bank: 'Vietcombank',
+        accountNumber: '3398128389',
+        bankIdentity: 'Nguyễn Văn Khẩn',
       },
     },
     {
       gender: 'groom',
-      name: '이호상',
+      name: 'Nguyễn Văn Thượng',
       relation: 'father',
-      phone: '010-7252-9110',
+      phone: '',
       account: {
-        bank: 'IM뱅크(대구)',
-        accountNumber: '173-07-105277-001',
-        bankIdentity: '번창기업(이호상)',
+        bank: 'Vietcombank',
+        accountNumber: '',
+        bankIdentity: 'Nguyễn Văn Thượng',
       },
     },
     {
       gender: 'groom',
-      name: '권정자',
+      name: 'Mẹ Hoàng Thị Vĩ',
       relation: 'mother',
-      phone: '010-9882-9110',
+      phone: '',
       account: {
-        bank: 'IM뱅크(대구)',
-        accountNumber: '097-08-004623',
-        bankIdentity: '권정자',
+        bank: 'Vietcombank',
+        accountNumber: '',
+        bankIdentity: 'Mẹ Hoàng Thị Vĩ',
       },
     },
     {
       gender: 'bride',
       name: 'Nguyễn Trang',
       relation: 'self',
-      phone: '010-6412-3317',
+      phone: '',
       account: {
-        bank: '우리',
-        accountNumber: '1002-160-599486',
+        bank: '',
+        accountNumber: '',
         bankIdentity: 'Nguyễn Trang',
       },
     },
     {
       gender: 'bride',
-      name: '김형준',
+      name: 'Nguyễn Văn Tươi',
       relation: 'father',
-      phone: '010-3427-3319',
+      phone: '',
       account: {
-        bank: '국민',
-        accountNumber: '451-21-1294-665',
-        bankIdentity: '김형준',
+        bank: '',
+        accountNumber: '',
+        bankIdentity: 'Nguyễn Văn Tươi',
       },
     },
     {
       gender: 'bride',
-      name: '손유진',
+      name: 'Nguyễn Thị Hoà',
       relation: 'mother',
-      phone: '010-3264-3318',
+      phone: '',
       account: {
-        bank: '농협',
-        accountNumber: '453026-56-124036',
-        bankIdentity: '손유진',
+        bank: '',
+        accountNumber: '',
+        bankIdentity: 'Nguyễn Thị Hoà',
       },
     },
   ],
   images: {
     intro: mapperBuildPath('/images/intro.png'),
     main: mapperBuildPath('/images/main.jpg'),
-    invitation: ['/images/single-m.png', '/images/single-w.png'].map(
-      mapperBuildPath
-    ),
+    invitation: ['/images/single-m.png', '/images/single-w.png'].map(mapperBuildPath),
   },
   gallery: [
     {
@@ -139,10 +149,10 @@ export default {
     position: position as Data['gallery'][number]['position'],
   })),
   map: {
-    name: 'BMK웨딩홀',
-    address: '대전 중구 서문로 133',
-    addressDetail: 'BMK 웨딩홀 4층, 아스틴홀',
-    tel: '042-334-1000',
+    name: 'Tại nhà',
+    address: 'Thôn Đụn, Xã Nam Sách, Hải Phòng',
+    addressDetail: 'Thôn Đụn, Xã Nam Sách, Hải Phòng',
+    tel: '0398128389',
     position: {
       latitude: 36.31983198404643,
       longitude: 127.40508053198738,
@@ -150,4 +160,4 @@ export default {
     link: 'https://maps.google.com/?q=36.31983198404643,127.40508053198738',
   },
   bgm: mapperBuildPath('/music/wedding-bgm.mp3'),
-} satisfies Data
+} satisfies Data;
