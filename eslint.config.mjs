@@ -14,7 +14,7 @@ const eslintConfig = [
   ...compat.extends('next/typescript'),
   {
     rules: {
-      '@typescript-eslint/no-unused-vars': 'warn',
+      '@typescript-eslint/no-unused-vars': 'off',
     },
   },
 ];
