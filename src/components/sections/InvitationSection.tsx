@@ -1,9 +1,11 @@
+'use client'
 import { useState } from 'react'
 import { IoIosCall } from 'react-icons/io'
 import { IoIosMail } from 'react-icons/io'
 import { Section } from '@/components/Section'
 import { IoCall } from 'react-icons/io5'
 import { OtherSectionImage, Person } from '@/models/model'
+import { motion } from 'framer-motion'
 
 export default function IntroSection({
   brideFamily,
@@ -27,93 +29,149 @@ export default function IntroSection({
   const brideMother = brideFamily.find(({ relation }) => relation === 'mother')
 
   return (
-    <Section.Container className="flex flex-col items-center">
+    <Section.Container className="flex flex-col items-center px-4">
       <Section.Title kor="Trân trọng kính mời quý khách" eng="INVITATION" />
-      <div className="flex flex-col gap-y-10 whitespace-pre my-9 font-gowun text-[#585858] text-[15px] text-center leading-[30px]">
-        {contents.map((content) => (
-          <Section.Typography key={content}>{content}</Section.Typography>
+      <div className="flex flex-col gap-y-8 whitespace-pre my-9 font-gowun text-[#666] text-base text-center leading-8 max-w-md">
+        {contents.map((content, idx) => (
+          <motion.div
+            key={content}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: idx * 0.2 }}
+          >
+            <Section.Typography className={idx === 0 ? 'italic text-gradient font-medium text-lg' : ''}>
+              {content}
+            </Section.Typography>
+          </motion.div>
         ))}
       </div>
 
-      <div className="flex gap-2 mx-2">
-        <div className="flex flex-col gap-4">
-          <Section.Image
-            src={images.invitation[0]}
-            alt=""
-            className="rounded-2xl w-[200px] h-[280px] object-cover object-bottom"
-            width={200}
-            height={280}
-          />
-        </div>
-        <div className="flex flex-col gap-4">
-          <Section.Image
-            src={images.invitation[1]}
-            alt=""
-            className="rounded-2xl w-[200px] h-[280px] object-cover object-bottom"
-            width={200}
-            height={280}
-          />
-        </div>
-      </div>
-      <div className="w-full py-10 mt-6 mb-4 rounded-xl">
-        <div className="flex justify-center items-start gap-4 px-6">
-          {/* Nhà Trai */}
-          <div className="flex-1 flex flex-col items-center text-center space-y-2">
-            <h3 className="text-sm font-bold tracking-[3px] mb-2 text-[#333]">
-              NHÀ TRAI
-            </h3>
-            <p className="text-[13px] font-bold tracking-wider text-[#444]">
-              ÔNG {groomFather?.name?.toUpperCase()}
-            </p>
-            <p className="text-[13px] font-bold tracking-wider text-[#444]">
-              BÀ {groomMother?.name?.toUpperCase()}
-            </p>
-            <div className="pt-4">
-              <p className="text-sm text-[#666]">Chú Rể</p>
-              <p className="text-xl sm:text-2xl font-ephesis mt-1 text-[#333] whitespace-nowrap">
-                {groomSelf?.name}
-              </p>
-            </div>
-          </div>
-
-          {/* Heart Icon */}
-          <div className="flex items-center justify-center px-2 pt-8">
-            <Section.Image
-              src="/images/heart.webp"
-              alt="Heart"
-              width={60}
-              height={60}
-              className="w-[50px] h-[50px] animate-breathing"
-            />
-          </div>
-
-          {/* Nhà Gái */}
-          <div className="flex-1 flex flex-col items-center text-center space-y-2">
-            <h3 className="text-sm font-bold tracking-[3px] mb-2 text-[#333]">
-              NHÀ GÁI
-            </h3>
-            <p className="text-[13px] font-bold tracking-wider text-[#444]">
-              ÔNG {brideFather?.name?.toUpperCase()}
-            </p>
-            <p className="text-[13px] font-bold tracking-wider text-[#444]">
-              BÀ {brideMother?.name?.toUpperCase()}
-            </p>
-            <div className="pt-4">
-              <p className="text-sm text-[#666]">Cô Dâu</p>
-              <p className="text-xl sm:text-2xl font-ephesis mt-1 text-[#333] whitespace-nowrap">
-                {brideSelf?.name}
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <Section.Button
-        onClick={() => setOpen(true)}
-        className="flex items-center gap-x-2"
+      <motion.div 
+        className="flex gap-3 mx-2 mb-8"
+        initial={{ opacity: 0, scale: 0.9 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
       >
-        <IoCall size={16} />
-        Liên hệ
-      </Section.Button>
+        {images.invitation.map((img, idx) => (
+          <motion.div
+            key={img}
+            className="relative group"
+            whileHover={{ scale: 1.05, y: -5 }}
+            transition={{ duration: 0.3 }}
+          >
+            <div className="absolute inset-0 bg-gradient-romantic rounded-2xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 z-10" />
+            <Section.Image
+              src={img}
+              alt={`Portrait ${idx + 1}`}
+              className="rounded-2xl w-[200px] h-[280px] object-cover object-bottom shadow-medium hover-lift"
+              width={200}
+              height={280}
+            />
+          </motion.div>
+        ))}
+      </motion.div>
+      <motion.div 
+        className="w-full py-8 mt-6 mb-4"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        <div className="glass-card-strong shadow-medium rounded-3xl p-6 mx-4 max-w-md mx-auto">
+          <div className="flex justify-center items-start gap-6">
+            {/* Nhà Trai */}
+            <motion.div 
+              className="flex-1 flex flex-col items-center text-center space-y-3"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="w-full pb-3 border-b-2 border-pink-200">
+                <h3 className="text-xs font-bold tracking-[3px] text-pink-500 uppercase">
+                  Nhà Trai
+                </h3>
+              </div>
+              <div className="space-y-1">
+                <p className="text-xs font-semibold tracking-wide text-[#666]">
+                  Ông {groomFather?.name}
+                </p>
+                <p className="text-xs font-semibold tracking-wide text-[#666]">
+                  Bà {groomMother?.name}
+                </p>
+              </div>
+              <div className="pt-3">
+                <p className="text-xs text-[#888] uppercase tracking-wider">Chú Rể</p>
+                <p className="text-2xl font-ephesis mt-2 text-gradient font-bold whitespace-nowrap">
+                  {groomSelf?.name}
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Heart Icon */}
+            <div className="flex items-center justify-center px-1 pt-12">
+              <motion.div
+                animate={{ 
+                  scale: [1, 1.2, 1],
+                  rotate: [0, 5, -5, 0]
+                }}
+                transition={{ 
+                  duration: 2, 
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              >
+                <Section.Image
+                  src="/images/heart.webp"
+                  alt="Heart"
+                  width={60}
+                  height={60}
+                  className="w-[45px] h-[45px] drop-shadow-lg"
+                />
+              </motion.div>
+            </div>
+
+            {/* Nhà Gái */}
+            <motion.div 
+              className="flex-1 flex flex-col items-center text-center space-y-3"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="w-full pb-3 border-b-2 border-pink-200">
+                <h3 className="text-xs font-bold tracking-[3px] text-pink-500 uppercase">
+                  Nhà Gái
+                </h3>
+              </div>
+              <div className="space-y-1">
+                <p className="text-xs font-semibold tracking-wide text-[#666]">
+                  Ông {brideFather?.name}
+                </p>
+                <p className="text-xs font-semibold tracking-wide text-[#666]">
+                  Bà {brideMother?.name}
+                </p>
+              </div>
+              <div className="pt-3">
+                <p className="text-xs text-[#888] uppercase tracking-wider">Cô Dâu</p>
+                <p className="text-2xl font-ephesis mt-2 text-gradient font-bold whitespace-nowrap">
+                  {brideSelf?.name}
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </motion.div>
+      <motion.div
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        <Section.Button
+          onClick={() => setOpen(true)}
+          className="flex items-center gap-x-2 gradient-romantic text-white font-semibold shadow-medium border-none hover:shadow-strong transition-all duration-300"
+        >
+          <IoCall size={18} />
+          Liên hệ
+        </Section.Button>
+      </motion.div>
 
       <Section.Dialog isOpen={open} onClose={() => setOpen(false)}>
         <div className="flex flex-col items-center text-[#ccc] text-center overflow-auto h-full">

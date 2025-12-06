@@ -56,16 +56,21 @@ export default function GalleryMasonry({ images }: { images: Gallery[] }) {
   }
 
   return (
-    <Section.Container fadeUp className="px-2">
-      <h1 className="text-center mb-7.5">
-        <p className="font-crimson text-[13px] text-[#f79e9e] tracking-[3px] opacity-60">
-          GALLERY
+    <Section.Container fadeUp className="px-4">
+      <motion.h1 
+        className="text-center mb-10"
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+      >
+        <p className="font-crimson text-sm tracking-[3px] text-pink-400 opacity-70 uppercase">
+          Gallery
         </p>
-        <p className="text-[#f79e9e] text-xl mt-1 font-gowun">Album ảnh cưới</p>
-      </h1>
+        <p className="text-gradient text-2xl mt-2 font-gowun font-bold">Album ảnh cưới</p>
+      </motion.h1>
 
       <motion.div
-        className="grid grid-cols-3 gap-1.5"
+        className="grid grid-cols-3 gap-2"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
@@ -75,10 +80,13 @@ export default function GalleryMasonry({ images }: { images: Gallery[] }) {
           <motion.div
             key={image.src}
             variants={itemVariants}
-            whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+            whileHover={{ scale: 1.08, transition: { duration: 0.2 } }}
             whileTap={{ scale: 0.95 }}
             transition={{ duration: 0.4 }}
+            className="relative group"
           >
+            <div className="absolute inset-0 bg-gradient-romantic rounded-lg opacity-0 group-hover:opacity-30 transition-opacity duration-300 z-10 pointer-events-none" />
+            <div className="absolute inset-0 shadow-medium rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-5" />
             <Picture
               onImageClick={() => handleImageClick(image.src, imageIndex)}
               src={image.src}
@@ -86,7 +94,7 @@ export default function GalleryMasonry({ images }: { images: Gallery[] }) {
               width={125}
               height={125}
               className={classNames(
-                'w-[125px] h-[125px] object-cover rounded cursor-pointer',
+                'w-[125px] h-[125px] object-cover rounded-lg cursor-pointer shadow-soft relative z-10',
                 image.position
               )}
             />

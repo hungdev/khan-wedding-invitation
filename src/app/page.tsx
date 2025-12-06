@@ -84,18 +84,33 @@ export default function Home() {
         )}
       </AnimatePresence>
 {!showIntro && (
-        <button
+        <motion.button
           onClick={() => toggle()}
-          className="fixed left-4 bottom-4 z-50 w-16 h-16 cursor-pointer transition-all hover:scale-110 rounded-full shadow-lg flex items-center justify-center p-3"
-          style={{ backgroundColor: 'rgba(255, 255, 255, 0.3)' }}
+          className="fixed left-4 bottom-4 z-50 w-16 h-16 cursor-pointer rounded-full flex items-center justify-center p-3 glass-card-strong shadow-medium"
+          whileHover={{ scale: 1.1, rotate: 5 }}
+          whileTap={{ scale: 0.9 }}
+          animate={isPlaying ? { 
+            boxShadow: [
+              '0 12px 40px rgba(247, 158, 158, 0.25)',
+              '0 12px 40px rgba(247, 158, 158, 0.5)',
+              '0 12px 40px rgba(247, 158, 158, 0.25)',
+            ]
+          } : {}}
+          transition={{ 
+            boxShadow: { duration: 2, repeat: Infinity }
+          }}
           aria-label={isPlaying ? 'Tắt nhạc' : 'Bật nhạc'}
         >
-          <img
+          <motion.img
             src={isPlaying ? '/images/music-on.gif' : '/images/music-off.png'}
             alt={isPlaying ? 'Tắt nhạc' : 'Bật nhạc'}
             className="w-full h-full object-contain"
+            animate={isPlaying ? { rotate: 360 } : {}}
+            transition={{ 
+              rotate: { duration: 3, repeat: Infinity, ease: "linear" }
+            }}
           />
-        </button>
+        </motion.button>
       )}
       <div className="flex flex-col gap-y-25 py-15">
         <MainSection {...data} />
