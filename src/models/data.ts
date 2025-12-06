@@ -154,10 +154,10 @@ export default {
     addressDetail: 'Thôn Đụn, Xã Nam Sách, Hải Phòng',
     tel: '0398128389',
     position: {
-      latitude: 36.31983198404643,
-      longitude: 127.40508053198738,
+      latitude: 21.0001417,
+      longitude: 106.3228353,
     },
-    link: 'https://maps.google.com/?q=36.31983198404643,127.40508053198738',
+    link: 'https://www.google.com/maps/place/21%C2%B000\'00.5%22N+106%C2%B019\'22.2%22E/@20.9994506,106.3222452,17z/data=!4m4!3m3!8m2!3d21.0001417!4d106.3228353?entry=ttu&g_ep=EgoyMDI1MTIwMi4wIKXMDSoASAFQAw%3D%3D',
   },
   bgm: mapperBuildPath('/music/wedding-bgm.mp3'),
 } satisfies Data;
