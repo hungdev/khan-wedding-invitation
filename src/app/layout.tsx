@@ -7,6 +7,7 @@ import {
 } from 'next/font/google'
 import '@/app/globals.css'
 import { data } from '@/models'
+import { BGEffect } from '@/components/bgEffect'
 
 const CrimsonPro = Crimson_Pro({
   variable: '--font-crimson-pro',
@@ -91,6 +92,7 @@ export default function RootLayout({
       <body
         className={`${CrimsonPro.variable} ${GowunDodum.variable} ${NotoSansKR.variable} ${EphesisFont.variable} antialiased bg-[#efefef] overflow-hidden`}
       >
+        <BGEffect />
         <main
           className="max-w-[425px] w-full bg-[#fafafa] mx-auto relative"
           role="main"
