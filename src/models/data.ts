@@ -8,7 +8,7 @@ export default {
   meta: {
     title: 'Nguyễn Khẩn & Nguyễn Trang wedding invitation',
     description:
-      'Thứ Bảy, 20 tháng 12 năm 2025, lúc 5 giờ chiều\nChủ nhật, 21 tháng 12 năm 2025, lúc 8 giờ 30 phút sáng\nTại Thôn Đụn, Xã Nam Sách, Hải Phòng',
+      'Thứ Bảy, 20/12/2025, lúc 5 giờ chiều\nChủ nhật, 21/12/2025, lúc 8 giờ 30 phút sáng\nTại Thôn Đụn, Xã Nam Sách, Hải Phòng',
     url: 'https://khan-wedding-invitation.vercel.app',
     thumbnail: mapperBuildPath('/images/thumbnail.png'),
   },
