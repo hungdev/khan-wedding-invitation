@@ -7,9 +7,8 @@ import { Person } from '@/models/model';
 export default function AccountSection({ families }: { families: Person[] }) {
   const title = 'Gửi tặng chúng tôi';
   const content = `
-    Dành cho quý khách không thể tham dự,
-    chúng tôi ghi lại thông tin tài khoản.
-    Mong quý vị thông cảm và chúc phúc.
+    Dành cho quý khách không thể tham dự, chúng tôi xin được gửi thông tin tài khoản để thuận tiện cho việc chúc phúc.
+    Rất mong nhận được sự thông cảm và lời chúc yêu thương từ quý vị.
   `;
   const { groomFamily, brideFamily } = {
     groomFamily: families.filter((person) => person.gender === 'groom'),
@@ -20,7 +19,7 @@ export default function AccountSection({ families }: { families: Person[] }) {
     <Section.Container>
       <Section.Title kor={title} eng="ACCOUNT" />
 
-      <div className="flex flex-col gap-y-10 whitespace-pre font-gowun text-[#585858] text-[15px] text-center leading-[30px]">
+      <div className="flex flex-col gap-y-10 font-gowun text-[#585858] text-[15px] text-center leading-[30px] px-4 max-w-full break-words">
         {content}
       </div>
 
