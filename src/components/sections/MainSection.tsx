@@ -64,14 +64,16 @@ export default function MainSection({ meta, weddingDates, families, images }: Da
       <VintageDecorations type="divider" />
 
       <div className="flex flex-col items-center gap-y-6 mt-8 mb-4">
-        <div className="flex flex-row gap-3 items-center flex-wrap justify-center px-4">
-          <span className="font-ephesis text-3xl sm:text-4xl text-[#8B7355] handwritten-shadow">
-            {groom?.name}
-          </span>
-          <span className="text-[#D4A5A5] text-2xl sm:text-3xl">❦</span>
-          <span className="font-ephesis text-3xl sm:text-4xl text-[#8B7355] handwritten-shadow">
-            {bride?.name}
-          </span>
+        <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 items-center justify-center px-4">
+          <div className="flex items-center gap-2">
+            <span className="font-ephesis text-2xl sm:text-3xl md:text-4xl text-[#8B7355] handwritten-shadow whitespace-nowrap">
+              {groom?.name}
+            </span>
+            <span className="text-[#D4A5A5] text-xl sm:text-2xl md:text-3xl">❦</span>
+            <span className="font-ephesis text-2xl sm:text-3xl md:text-4xl text-[#8B7355] handwritten-shadow whitespace-nowrap">
+              {bride?.name}
+            </span>
+          </div>
         </div>
         
         <VintageDecorations type="heart" className="my-4" />
