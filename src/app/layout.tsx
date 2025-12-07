@@ -4,6 +4,10 @@ import {
   Gowun_Dodum,
   Noto_Sans_KR,
   Ephesis,
+  Dancing_Script,
+  Parisienne,
+  Great_Vibes,
+  Alex_Brush,
 } from 'next/font/google'
 import '@/app/globals.css'
 import { data } from '@/models'
@@ -31,6 +35,33 @@ const NotoSansKR = Noto_Sans_KR({
 
 const EphesisFont = Ephesis({
   variable: '--font-ephesis',
+  subsets: ['latin'],
+  weight: '400',
+  display: 'swap',
+})
+
+const DancingScript = Dancing_Script({
+  variable: '--font-dancing-script',
+  subsets: ['latin'],
+  display: 'swap',
+})
+
+const ParisienneFont = Parisienne({
+  variable: '--font-parisienne',
+  subsets: ['latin'],
+  weight: '400',
+  display: 'swap',
+})
+
+const GreatVibes = Great_Vibes({
+  variable: '--font-great-vibes',
+  subsets: ['latin'],
+  weight: '400',
+  display: 'swap',
+})
+
+const AlexBrush = Alex_Brush({
+  variable: '--font-alex-brush',
   subsets: ['latin'],
   weight: '400',
   display: 'swap',
@@ -90,11 +121,11 @@ export default function RootLayout({
         <meta name="twitter:image" content={data.meta.thumbnail} />
       </head>
       <body
-        className={`${CrimsonPro.variable} ${GowunDodum.variable} ${NotoSansKR.variable} ${EphesisFont.variable} antialiased bg-[#efefef] overflow-hidden`}
+        className={`${CrimsonPro.variable} ${GowunDodum.variable} ${NotoSansKR.variable} ${EphesisFont.variable} ${DancingScript.variable} ${ParisienneFont.variable} ${GreatVibes.variable} ${AlexBrush.variable} antialiased bg-[#F4ECD8] overflow-hidden`}
       >
         <BGEffect />
         <main
-          className="max-w-[425px] w-full bg-[#fafafa] mx-auto relative"
+          className="max-w-[425px] w-full vintage-paper mx-auto relative shadow-2xl"
           role="main"
         >
           {children}
