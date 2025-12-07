@@ -1,5 +1,7 @@
 # Wedding Invitation
 
+Repo has been forked from https://github.com/253eosam/wedding-invitation
+
 A modern wedding invitation web app built with Next.js 15 and React 19.
 
 ## 🚀 Tech Stack

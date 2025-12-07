@@ -39,7 +39,7 @@ export default function AccountSection({ families }: { families: Person[] }) {
       <VintageDecorations type="divider" />
 
       <div className="flex flex-col gap-10 mt-8">
-        <details open className="shadow-xl rounded-xl w-[320px] mx-auto group text-base lace-border vintage-vignette">
+        <details className="shadow-xl rounded-xl w-[320px] mx-auto group text-base lace-border vintage-vignette">
           <summary className="font-ephesis text-2xl rounded-t-xl font-medium tracking-wide text-center list-none bg-[#FFF8E7] px-5 h-[60px] flex items-center justify-center text-[#8B7355] handwritten-shadow cursor-pointer hover:bg-[#F5E6D3] transition-all">
             <p className="flex-1">Tài khoản chú rể</p>
             <IoIosArrowDown
