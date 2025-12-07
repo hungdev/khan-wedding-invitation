@@ -9,16 +9,34 @@
   --font-noto: var(--font-noto-sans-kr);
   --font-ephesis: var(--font-ephesis);
 
-  --color-primary: #f79e9e;
-
-  --color-highlight: rgb(247, 158, 158);
-  --color-secondary: rgb(84, 79, 79);
+  /* Burgundy Elegant Palette */
+  --color-primary: #8B2E3D;
+  --color-primary-light: #A83448;
+  --color-primary-dark: #6B1F2A;
+  
+  --color-cream: #F5F3F0;
+  --color-beige: #EAE7E3;
+  --color-gold: #D4AF37;
+  --color-gold-light: #E5C76B;
+  
+  --color-charcoal: #2C2C2C;
+  --color-charcoal-light: #4A4A4A;
+  --color-text-muted: #6B6B6B;
+  
+  --color-highlight: #8B2E3D;
+  --color-secondary: #4A4A4A;
+  
+  /* Shadows */
+  --shadow-elegant: 0 4px 20px rgba(139, 46, 61, 0.08);
+  --shadow-medium: 0 8px 30px rgba(139, 46, 61, 0.12);
+  --shadow-strong: 0 12px 40px rgba(139, 46, 61, 0.15);
 }
 
 body {
   -webkit-text-stroke-color: inherit;
-  -webkit-text-stroke-width: 0.2px;
+  -webkit-text-stroke-width: 0;
   font-family:
+    var(--font-noto-sans-kr),
     var(--font-gowun-dodum),
     system-ui,
     -apple-system,
@@ -31,33 +49,158 @@ body {
     'Open Sans',
     'Helvetica Neue',
     sans-serif;
+  background: #FEFEFE;
+  color: var(--color-charcoal);
+  letter-spacing: 0.3px;
 }
 
 @layer utilities {
-  .gradient-fade-up {
-    background: linear-gradient(
-      0deg,
-      rgba(250, 250, 250, 1) 0%,
-      rgba(250, 250, 250, 0.55) 60%,
-      rgba(250, 250, 250, 0.5) 73%,
-      rgba(250, 250, 250, 0.25) 83%,
-      rgba(250, 250, 250, 0) 100%
-    );
+  /* Gradients - Burgundy Elegant */
+  .gradient-burgundy {
+    background: linear-gradient(135deg, #8B2E3D 0%, #6B1F2A 100%);
   }
 
-  .animate-breathing {
-    animation: breathing 3s ease-in-out infinite;
+  .gradient-burgundy-soft {
+    background: linear-gradient(135deg, #A83448 0%, #8B2E3D 50%, #6B1F2A 100%);
   }
 
-  @keyframes breathing {
-    0%,
-    100% {
-      transform: scale(1);
+  .gradient-gold {
+    background: linear-gradient(135deg, #D4AF37 0%, #C9A962 100%);
+  }
+
+  .gradient-text-burgundy {
+    background: linear-gradient(135deg, #8B2E3D 0%, #A83448 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Korean Minimal Card */
+  .korean-card {
+    background: #FEFEFE;
+    border: 1px solid rgba(139, 46, 61, 0.1);
+    border-radius: 2px;
+  }
+
+  .korean-card-hover {
+    background: #FEFEFE;
+    border: 1px solid rgba(139, 46, 61, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .korean-card-hover:hover {
+    border-color: rgba(139, 46, 61, 0.3);
+    box-shadow: var(--shadow-elegant);
+  }
+
+  /* Elegant Divider */
+  .divider-elegant {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, #8B2E3D 50%, transparent 100%);
+  }
+
+  .divider-gold {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, #D4AF37 50%, transparent 100%);
+  }
+
+  /* Shadows */
+  .shadow-elegant {
+    box-shadow: var(--shadow-elegant);
+  }
+
+  .shadow-medium {
+    box-shadow: var(--shadow-medium);
+  }
+
+  .shadow-strong {
+    box-shadow: var(--shadow-strong);
+  }
+
+  /* Animations - Subtle & Elegant */
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  .animate-slide-in {
+    animation: slideIn 0.6s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
       opacity: 1;
     }
-    50% {
-      transform: scale(1.8);
-      opacity: 0.8;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  /* Typography */
+  .text-elegant {
+    font-family: var(--font-crimson);
+    letter-spacing: 0.5px;
+    line-height: 1.6;
+  }
+
+  .text-korean {
+    font-family: var(--font-noto);
+    letter-spacing: -0.3px;
+    line-height: 1.7;
+  }
+
+  /* Hover Effects - Minimal */
+  .hover-lift-subtle {
+    transition: all 0.3s ease;
+  }
+
+  .hover-lift-subtle:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Section Spacing - Korean Style */
+  .section-padding {
+    padding: 80px 24px;
+  }
+
+  .section-padding-sm {
+    padding: 60px 24px;
+  }
+
+  @media (min-width: 768px) {
+    .section-padding {
+      padding: 120px 40px;
+    }
+    
+    .section-padding-sm {
+      padding: 80px 40px;
     }
   }
 }

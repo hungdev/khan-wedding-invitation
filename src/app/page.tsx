@@ -97,7 +97,7 @@ export default function Home() {
           />
         </button>
       )}
-      <div className="flex flex-col gap-y-25 py-15">
+      <div className="flex flex-col">
         <MainSection {...data} />
         <InvitationSection
           images={images}

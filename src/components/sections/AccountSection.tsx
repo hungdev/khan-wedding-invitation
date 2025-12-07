@@ -1,108 +1,128 @@
-import classNames from 'classnames';
-import { IoIosArrowDown } from 'react-icons/io';
-import { FiCopy } from 'react-icons/fi';
-import { Section } from '@/components/Section';
-import { Person } from '@/models/model';
+'use client'
+import { FiCopy, FiCheck } from 'react-icons/fi'
+import { Person } from '@/models/model'
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 
 export default function AccountSection({ families }: { families: Person[] }) {
-  const title = 'Gửi tặng đến chúng tôi';
-  const content = `
-    Dành cho quý khách không thể tham dự, 
-    chúng tôi xin được gửi thông tin tài khoản để thuận tiện cho việc chúc phúc. Rất mong nhận được sự thông cảm và lời chúc yêu thương từ quý vị.
-  `;
-  const { groomFamily, brideFamily } = {
-    groomFamily: families.filter((person) => person.gender === 'groom'),
-    brideFamily: families.filter((person) => person.gender === 'bride'),
-  };
+  const groomFamily = families.filter((person) => person.gender === 'groom')
+  const [copied, setCopied] = useState(false)
+
+  const handleCopy = (account: { bank: string; accountNumber: string }) => {
+    const copyContent = `${account.bank} ${account.accountNumber}`
+    navigator.clipboard.writeText(copyContent)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
+  }
 
   return (
-    <Section.Container>
-      <Section.Title kor={title} eng="ACCOUNT" />
+    <section className="section-padding bg-[#F5F3F0]">
+      <div className="max-w-4xl mx-auto">
+        
+        {/* Title */}
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <div className="divider-elegant mx-auto mb-6" />
+          <h2 className="font-crimson text-3xl text-[#8B2E3D] font-light tracking-wider mb-4">
+            ACCOUNT
+          </h2>
+          <p className="text-sm text-[#4A4A4A] tracking-wide mb-8">
+            Gửi tặng đến chúng tôi
+          </p>
+          <p className="text-xs text-[#6B6B6B] leading-relaxed max-w-2xl mx-auto">
+            Dành cho quý khách không thể tham dự, chúng tôi xin được gửi thông tin tài khoản 
+            để thuận tiện cho việc chúc phúc. Rất mong nhận được sự thông cảm 
+            và lời chúc yêu thương từ quý vị.
+          </p>
+        </motion.div>
 
-      <div className="flex flex-col gap-y-10 font-gowun text-[#585858] text-[15px] text-center leading-[30px] px-4 max-w-full whitespace-pre-line mb-10">
-        {content}
-      </div>
+        {/* Account Card - Minimal Elegant */}
+        <motion.div
+          className="max-w-lg mx-auto"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+        >
+          <div className="korean-card shadow-elegant overflow-hidden">
+            {/* Header */}
+            <div className="gradient-burgundy p-4 text-center">
+              <p className="text-white text-sm tracking-[3px] uppercase font-light">
+                Tài khoản chú rể
+              </p>
+            </div>
 
-      <div className="flex flex-col gap-10">
-        <details open className="shadow rounded-lg w-[310px] mx-auto group text-base">
-          <summary className="font-kor rounded-t-lg font-medium tracking-[2px] text-center list-none bg-[#f3f3f3] px-5 h-[50px] flex items-center justify-center">
-            <p className="flex-1">Tài khoản chú rể</p>
-            <IoIosArrowDown
-              className={classNames('w-4 h-4', 'group-open:rotate-180')}
-              color="#999"
-            />
-          </summary>
-          <div className="font-noto text-[13px] text-[#333333] font-light">
+            {/* Account Info */}
             {groomFamily
               .filter((person) => person.relation === 'self')
               .map(({ account, name }, idx) => (
-                <button
-                  key={name + idx}
-                  className="flex flex-row w-full gap-x-2 cursor-pointer flex-1 p-4"
-                  onClick={() => {
-                    const copyContent = `${account.bank} ${account.accountNumber}`;
-                    navigator.clipboard.writeText(copyContent);
-                    alert(
-                      `Đã sao chép: ${account.bank} ${account.accountNumber} (${account.bankIdentity})`
-                    );
-                  }}
-                >
-                  <div className="flex flex-col gap-x-2 cursor-pointer flex-1">
-                    <div className="flex gap-x-2">
-                      <p className="">Nguyễn Văn Khẩn</p>
+                <div key={idx}>
+                  <button
+                    className="w-full p-6 hover:bg-[#F5F3F0] transition-colors text-left group"
+                    onClick={() => handleCopy(account)}
+                  >
+                    <div className="flex items-center justify-between gap-4">
+                      <div className="flex-1">
+                        <p className="text-base text-[#2C2C2C] font-medium mb-3">
+                          {name}
+                        </p>
+                        <div className="space-y-1 text-sm text-[#6B6B6B]">
+                          <p className="font-medium">{account.bank}</p>
+                          <p className="font-mono tracking-wider">{account.accountNumber}</p>
+                        </div>
+                      </div>
+                      <div className={`
+                        w-10 h-10 rounded-full flex items-center justify-center transition-colors
+                        ${copied 
+                          ? 'bg-green-100 text-green-600' 
+                          : 'bg-[#8B2E3D]/10 text-[#8B2E3D] group-hover:bg-[#8B2E3D]/20'}
+                      `}>
+                        {copied ? <FiCheck size={18} /> : <FiCopy size={18} />}
+                      </div>
                     </div>
-                    <div className="flex flex-row gap-x-2">
-                      <p className="">{account.bank}</p>
-                      <p className="">{account.accountNumber}</p>
+                  </button>
+
+                  {/* QR Code */}
+                  <div className="p-6 bg-[#F5F3F0]/50 border-t border-[#8B2E3D]/10">
+                    <div className="korean-card p-4 bg-white">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img 
+                        src="/images/bank.png" 
+                        alt="Bank QR Code" 
+                        className="w-full h-auto" 
+                      />
                     </div>
-                  </div>
-                  <FiCopy className="w-4 h-4" />
-                </button>
-              ))}
-            <div className="p-4">
-              <img src="/images/bank.png" alt="Bank QR Code" className="w-full h-auto" />
-            </div>
-          </div>
-        </details>
-        {/* <details
-          open
-          className="shadow rounded-lg w-[310px] mx-auto group text-base"
-        >
-          <summary className="font-kor rounded-t-lg font-medium tracking-[2px] text-center list-none bg-[#f3f3f3] px-5 h-[50px] flex items-center justify-center">
-            <p className="flex-1">Tài khoản phía cô dâu</p>
-            <IoIosArrowDown
-              className={classNames('w-4 h-4', 'group-open:rotate-180')}
-              color="#999"
-            />
-          </summary>
-          <div className="font-noto text-[13px] text-[#333333] font-light">
-            {brideFamily.map(({ account, name }, idx) => (
-              <button
-                key={name + idx}
-                className="flex flex-row w-full gap-x-2 cursor-pointer flex-1 p-4"
-                onClick={() => {
-                  const copyContent = `${account.bank} ${account.accountNumber}`
-                  navigator.clipboard.writeText(copyContent)
-                  alert(
-                    `Đã sao chép: ${account.bank} ${account.accountNumber} (${account.bankIdentity})`
-                  )
-                }}
-              >
-                <div className="flex flex-col gap-x-2 cursor-pointer flex-1">
-                  <div className="flex gap-x-2">
-                    <p className="">{name}</p>
-                  </div>
-                  <div className="flex flex-row gap-x-2">
-                    <p className="">{account.bank}</p>
-                    <p className="">{account.accountNumber}</p>
+                    <p className="text-center text-xs text-[#8B8B8B] mt-4 tracking-wide">
+                      Quét mã QR để chuyển khoản
+                    </p>
                   </div>
                 </div>
-                <FiCopy className="w-4 h-4" />
-              </button>
-            ))}
+              ))}
           </div>
-        </details> */}
+        </motion.div>
+
       </div>
-    </Section.Container>
-  );
+
+      {/* Toast Notification */}
+      <AnimatePresence>
+        {copied && (
+          <motion.div
+            className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+          >
+            <div className="korean-card px-6 py-3 shadow-strong flex items-center gap-2 bg-white">
+              <FiCheck className="text-green-600" size={18} />
+              <span className="text-sm text-[#2C2C2C]">Đã sao chép thành công!</span>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </section>
+  )
 }

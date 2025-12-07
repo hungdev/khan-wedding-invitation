@@ -1,11 +1,12 @@
+'use client'
 import { useState } from 'react'
-import { IoIosCall } from 'react-icons/io'
-import { IoIosMail } from 'react-icons/io'
-import { Section } from '@/components/Section'
 import { IoCall } from 'react-icons/io5'
+import { IoIosCall, IoIosMail } from 'react-icons/io'
+import { Section } from '@/components/Section'
 import { OtherSectionImage, Person } from '@/models/model'
+import { motion } from 'framer-motion'
 
-export default function IntroSection({
+export default function InvitationSection({
   brideFamily,
   groomFamily,
   images,
@@ -15,10 +16,7 @@ export default function IntroSection({
   images: OtherSectionImage
 }) {
   const [open, setOpen] = useState(false)
-  const contents = [
-    '“Hôn nhân là chuyện cả đời,\nYêu người vừa ý, cưới người mình thương..."',
-    'Trong ngày tràn đầy hạnh phúc và yêu thương,\nchúng tôi thật hạnh phúc khi được đón tiếp \nvà nhận những lời chúc phúc chân thành từ quý vị.',
-  ]
+  
   const groomSelf = groomFamily.find(({ relation }) => relation === 'self')
   const groomFather = groomFamily.find(({ relation }) => relation === 'father')
   const groomMother = groomFamily.find(({ relation }) => relation === 'mother')
@@ -27,130 +25,163 @@ export default function IntroSection({
   const brideMother = brideFamily.find(({ relation }) => relation === 'mother')
 
   return (
-    <Section.Container className="flex flex-col items-center">
-      <Section.Title kor="Trân trọng kính mời quý khách" eng="INVITATION" />
-      <div className="flex flex-col gap-y-10 whitespace-pre my-9 font-gowun text-[#585858] text-[15px] text-center leading-[30px]">
-        {contents.map((content) => (
-          <Section.Typography key={content}>{content}</Section.Typography>
-        ))}
-      </div>
-
-      <div className="flex gap-2 mx-2">
-        <div className="flex flex-col gap-4">
-          <Section.Image
-            src={images.invitation[0]}
-            alt=""
-            className="rounded-2xl w-[200px] h-[280px] object-cover object-bottom"
-            width={200}
-            height={280}
-          />
-        </div>
-        <div className="flex flex-col gap-4">
-          <Section.Image
-            src={images.invitation[1]}
-            alt=""
-            className="rounded-2xl w-[200px] h-[280px] object-cover object-bottom"
-            width={200}
-            height={280}
-          />
-        </div>
-      </div>
-      <div className="w-full py-10 mt-6 mb-4 rounded-xl">
-        <div className="flex justify-center items-start gap-4 px-6">
-          {/* Nhà Trai */}
-          <div className="flex-1 flex flex-col items-center text-center space-y-2">
-            <h3 className="text-sm font-bold tracking-[3px] mb-2 text-[#333]">
-              NHÀ TRAI
-            </h3>
-            <p className="text-[13px] font-bold tracking-wider text-[#444]">
-              ÔNG {groomFather?.name?.toUpperCase()}
-            </p>
-            <p className="text-[13px] font-bold tracking-wider text-[#444]">
-              BÀ {groomMother?.name?.toUpperCase()}
-            </p>
-            <div className="pt-4">
-              <p className="text-sm text-[#666]">Chú Rể</p>
-              <p className="text-xl sm:text-2xl font-ephesis mt-1 text-[#333] whitespace-nowrap">
-                {groomSelf?.name}
-              </p>
-            </div>
-          </div>
-
-          {/* Heart Icon */}
-          <div className="flex items-center justify-center px-2 pt-8">
-            <Section.Image
-              src="/images/heart.webp"
-              alt="Heart"
-              width={60}
-              height={60}
-              className="w-[50px] h-[50px] animate-breathing"
-            />
-          </div>
-
-          {/* Nhà Gái */}
-          <div className="flex-1 flex flex-col items-center text-center space-y-2">
-            <h3 className="text-sm font-bold tracking-[3px] mb-2 text-[#333]">
-              NHÀ GÁI
-            </h3>
-            <p className="text-[13px] font-bold tracking-wider text-[#444]">
-              ÔNG {brideFather?.name?.toUpperCase()}
-            </p>
-            <p className="text-[13px] font-bold tracking-wider text-[#444]">
-              BÀ {brideMother?.name?.toUpperCase()}
-            </p>
-            <div className="pt-4">
-              <p className="text-sm text-[#666]">Cô Dâu</p>
-              <p className="text-xl sm:text-2xl font-ephesis mt-1 text-[#333] whitespace-nowrap">
-                {brideSelf?.name}
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <Section.Button
-        onClick={() => setOpen(true)}
-        className="flex items-center gap-x-2"
-      >
-        <IoCall size={16} />
-        Liên hệ
-      </Section.Button>
-
-      <Section.Dialog isOpen={open} onClose={() => setOpen(false)}>
-        <div className="flex flex-col items-center text-[#ccc] text-center overflow-auto h-full">
-          <h2 className="mt-[50px]">
-            <p className="font-crimson text-xs font-medium text-[#999] tracking-[3px]">
-              CONTACT
-            </p>
-            <p className="font-gowun text-lg font-medium tracking-[2px]">
-              Liên hệ
-            </p>
+    <section className="section-padding bg-[#F5F3F0]">
+      <div className="max-w-5xl mx-auto">
+        
+        {/* Title - Minimalist */}
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <div className="divider-elegant mx-auto mb-6" />
+          <h2 className="font-crimson text-3xl text-[#8B2E3D] font-light tracking-wider mb-4">
+            INVITATION
           </h2>
-          <div className="mt-15 font-gowun text-sm">
-            <p className="border-b-1 border-dotted border-gray-400 pb-2.5 w-[300px] text-start">
-              Phía chú rể
-              <span className="text-[#999] text-xs align-bottom ml-1 tracking-[3px]">
-                GROOM
-              </span>
-            </p>
-            <ul>
-              <li className="my-5 flex">
-                <p className="flex-1/3 text-start ">Chú rể</p>
-                <p className="flex-1/3 text-[15px] text-white">
-                  {groomSelf?.name}
-                </p>
-                <div className="flex-1/3 flex justify-end gap-x-5">
-                  <a href={`tel:${groomSelf?.phone}`}>
-                    <IoIosCall size={20} />
-                  </a>
-                  <a href={`sms:${groomSelf?.phone}`}>
-                    <IoIosMail size={20} />
-                  </a>
-                </div>
-              </li>
-            </ul>
+          <p className="text-sm text-[#4A4A4A] tracking-wide max-w-2xl mx-auto leading-relaxed">
+            Trân trọng kính mời quý khách
+          </p>
+        </motion.div>
+
+        {/* Quote - Elegant */}
+        <motion.div
+          className="text-center mb-16 px-8"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+        >
+          <p className="font-ephesis text-2xl text-[#8B2E3D] italic leading-relaxed">
+            &ldquo;Hôn nhân là chuyện cả đời,<br />
+            Yêu người vừa ý, cưới người mình thương...&rdquo;
+          </p>
+        </motion.div>
+
+        {/* Photos - Korean Minimal Grid - Side by Side */}
+        <motion.div 
+          className="flex gap-6 justify-center items-start mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+        >
+          {images.invitation.map((img, idx) => (
+            <div key={idx} className="relative group">
+              <Section.Image
+                src={img}
+                alt={`Portrait ${idx + 1}`}
+                className="w-[180px] h-[250px] sm:w-[220px] sm:h-[300px] object-cover shadow-elegant"
+                width={220}
+                height={300}
+              />
+              <div className="absolute inset-0 border border-[#8B2E3D]/10" />
+            </div>
+          ))}
+        </motion.div>
+
+        {/* Family Info - Elegant Korean Card */}
+        <motion.div
+          className="korean-card shadow-elegant p-8 sm:p-12 max-w-3xl mx-auto mb-12"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4 }}
+        >
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 items-center">
+            
+            {/* Groom Side */}
+            <div className="text-center space-y-4">
+              <p className="text-xs tracking-[3px] text-[#8B2E3D] uppercase font-light mb-4">
+                Nhà Trai
+              </p>
+              <div className="space-y-2 text-xs text-[#6B6B6B]">
+                <p>Ông {groomFather?.name}</p>
+                <p>Bà {groomMother?.name}</p>
+              </div>
+              <div className="divider-gold mx-auto my-4" />
+              <div>
+                <p className="text-xs text-[#8B8B8B] mb-2">Chú Rể</p>
+                <p className="font-ephesis text-3xl text-[#8B2E3D]">{groomSelf?.name}</p>
+              </div>
+            </div>
+
+            {/* Heart Divider */}
+            <div className="flex justify-center">
+              <span className="text-4xl text-[#D4AF37]">♡</span>
+            </div>
+
+            {/* Bride Side */}
+            <div className="text-center space-y-4">
+              <p className="text-xs tracking-[3px] text-[#8B2E3D] uppercase font-light mb-4">
+                Nhà Gái
+              </p>
+              <div className="space-y-2 text-xs text-[#6B6B6B]">
+                <p>Ông {brideFather?.name}</p>
+                <p>Bà {brideMother?.name}</p>
+              </div>
+              <div className="divider-gold mx-auto my-4" />
+              <div>
+                <p className="text-xs text-[#8B8B8B] mb-2">Cô Dâu</p>
+                <p className="font-ephesis text-3xl text-[#8B2E3D]">{brideSelf?.name}</p>
+              </div>
+            </div>
+
+          </div>
+        </motion.div>
+
+        {/* Contact Button - Minimal */}
+        <motion.div 
+          className="text-center"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5 }}
+        >
+          <button
+            onClick={() => setOpen(true)}
+            className="korean-card-hover px-8 py-3 text-sm tracking-[2px] text-[#8B2E3D] hover:text-[#6B1F2A] transition-colors flex items-center gap-2 mx-auto"
+          >
+            <IoCall size={16} />
+            LIÊN HỆ
+          </button>
+        </motion.div>
+
+      </div>
+
+      {/* Contact Dialog - Minimal */}
+      <Section.Dialog isOpen={open} onClose={() => setOpen(false)}>
+        <div className="flex flex-col items-center text-white text-center overflow-auto h-full p-8">
+          <div className="mt-20">
+            <div className="divider-gold mx-auto mb-6" />
+            <h2 className="font-crimson text-2xl tracking-wider mb-2">CONTACT</h2>
+            <p className="text-sm tracking-wide opacity-80">Liên hệ</p>
+          </div>
+          
+          <div className="mt-12 w-full max-w-sm">
+            <div className="border-b border-white/20 pb-4 mb-6">
+              <p className="text-xs tracking-[3px] opacity-60">GROOM · CHÚ RỂ</p>
+            </div>
+            <div className="flex items-center justify-between">
+              <div className="text-left">
+                <p className="text-sm opacity-60 mb-1">Chú rể</p>
+                <p className="text-lg">{groomSelf?.name}</p>
+              </div>
+              <div className="flex gap-4">
+                <a href={`tel:${groomSelf?.phone}`} 
+                   className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center hover:bg-white/10 transition">
+                  <IoIosCall size={20} />
+                </a>
+                <a href={`sms:${groomSelf?.phone}`}
+                   className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center hover:bg-white/10 transition">
+                  <IoIosMail size={20} />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </Section.Dialog>
-    </Section.Container>
+    </section>
   )
 }

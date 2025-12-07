@@ -90,11 +90,11 @@ export default function RootLayout({
         <meta name="twitter:image" content={data.meta.thumbnail} />
       </head>
       <body
-        className={`${CrimsonPro.variable} ${GowunDodum.variable} ${NotoSansKR.variable} ${EphesisFont.variable} antialiased bg-[#efefef] overflow-hidden`}
+        className={`${CrimsonPro.variable} ${GowunDodum.variable} ${NotoSansKR.variable} ${EphesisFont.variable} antialiased bg-[#EAE7E3] overflow-hidden`}
       >
         <BGEffect />
         <main
-          className="max-w-[425px] w-full bg-[#fafafa] mx-auto relative"
+          className="max-w-[600px] w-full bg-[#FEFEFE] mx-auto relative"
           role="main"
         >
           {children}
