@@ -6,6 +6,7 @@ import classNames from 'classnames'
 import { useEffect, useState } from 'react'
 import { WeddingDate } from '@/models/model'
 import { Section } from '../Section'
+import VintageDecorations from '../ui/VintageDecorations'
 
 export default function CalendarSection({
   weddingDates,
@@ -38,9 +39,22 @@ export default function CalendarSection({
   const diffSeconds = firstDate.diff(now, 'second') % 60
 
   return (
-    <Section.Container className="text-center flex flex-col gap-y-9">
-      <Section.Title kor="Ngày cưới" eng="CALENDAR" />
-      <div className="text-secondary flex flex-col gap-4">
+    <Section.Container className="text-center flex flex-col gap-y-8 px-4 relative">
+      <VintageDecorations type="corner" className="top-0 left-0" />
+      <VintageDecorations type="corner" className="top-0 right-0 rotate-90" />
+      
+      <div className="text-center mb-4 vintage-fade-in">
+        <h2 className="font-dancing text-5xl text-[#8B7355] mb-2 handwritten-shadow">
+          Calendar
+        </h2>
+        <p className="font-gowun text-sm text-[#6B5344] tracking-[4px] opacity-70">
+          NGÀY CƯỚI
+        </p>
+      </div>
+
+      <VintageDecorations type="floral" />
+
+      <div className="text-[#6B5344] flex flex-col gap-6 lace-border p-6 scrapbook-sticker">
         {weddingDates.map((weddingDate, index) => {
           const { year, month, day, time } = weddingDate
           const marryDate = dayjs(
@@ -48,9 +62,11 @@ export default function CalendarSection({
             'YYYY/MM/DD hh:mm'
           )
           return (
-            <div key={index}>
-              <h2 className="text-2xl">{marryDate.format('DD.MM.YYYY')}</h2>
-              <p className="text-medium mt-2">
+            <div key={index} className="vintage-fade-in">
+              <h2 className="font-crimson text-3xl text-[#8B7355] tracking-wider">
+                {marryDate.format('DD.MM.YYYY')}
+              </h2>
+              <p className="font-gowun text-sm mt-2 text-[#C19A6B] tracking-widest">
                 {marryDate.locale('vi').format('dddd')} {marryDate.format('hh:mm')}{' '}
                 {time.amPm.toUpperCase()}
               </p>
@@ -58,10 +74,14 @@ export default function CalendarSection({
           )
         })}
       </div>
+
+      <VintageDecorations type="divider" />
+
       <div className="w-full">
         <Calendar dday={firstDate} />
       </div>
-      <div className="flex flex-row justify-center gap-0.5">
+
+      <div className="flex flex-row justify-center gap-1 py-6 bg-[#FFF8E7] bg-opacity-50 rounded-xl">
         <DateUnit value={diff.toString()} name="DAYS" />
         <DateUnit />
         <DateUnit value={diffHours.toString()} name="HOUR" />
@@ -70,12 +90,21 @@ export default function CalendarSection({
         <DateUnit />
         <DateUnit value={diffSeconds.toString()} name="SEC" />
       </div>
-      <p className="mt-4 font-bold text-[#666666] px-4">
-        Còn <strong className="text-highlight">{diff}</strong> ngày nữa đến đám
-        cưới của
+
+      <p className="mt-2 font-crimson italic text-[#6B5344] px-4 text-sm sm:text-base leading-relaxed">
+        Còn <strong className="text-[#D4A5A5] font-ephesis text-xl sm:text-2xl">{diff}</strong> ngày nữa
         <br />
-        {groom} và {bride}.
+        đến đám cưới của
+        <br />
+        <span className="font-ephesis text-lg sm:text-xl text-[#8B7355]">{groom}</span>
+        {' '}và{' '}
+        <span className="font-ephesis text-lg sm:text-xl text-[#8B7355]">{bride}</span>
       </p>
+
+      <VintageDecorations type="seal" className="mt-4" />
+      
+      <VintageDecorations type="corner" className="bottom-0 left-0 rotate-[-90deg]" />
+      <VintageDecorations type="corner" className="bottom-0 right-0 rotate-180" />
     </Section.Container>
   )
 }
@@ -90,12 +119,12 @@ const DateUnit = ({
   return (
     <div
       className={classNames(
-        'flex flex-col font-crimson text-[#2b2222]',
-        value === ':' ? 'min-w-2 text-base' : 'min-w-8 text-2xl'
+        'flex flex-col font-crimson text-[#6B5344]',
+        value === ':' ? 'min-w-2 text-lg text-[#D4A5A5]' : 'min-w-10 text-3xl'
       )}
     >
-      <p className="opacity-40 text-[10px] uppercase">{name}</p>
-      <p className="opacity-80">{value}</p>
+      <p className="text-[#C19A6B] opacity-60 text-[9px] uppercase tracking-wider font-gowun">{name}</p>
+      <p className="font-semibold handwritten-shadow">{value}</p>
     </div>
   )
 }

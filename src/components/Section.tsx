@@ -53,7 +53,7 @@ const SectionTypography = forwardRef<
       {...fadeUpMotionProps}
       ref={ref}
       className={classNames(
-        'font-gowun text-[#544f4f] text-sm text-center leading-7.5 font-normal',
+        'font-gowun text-[#6B5344] text-sm text-center leading-7.5 font-normal',
         className
       )}
       {...props}
@@ -73,7 +73,7 @@ const SectionButton = forwardRef<
       {...fadeUpMotionProps}
       ref={ref}
       className={classNames(
-        'border border-[#eeeeee] bg-white py-2 px-7.5 rounded-xl text-[#404040] cursor-pointer',
+        'border-2 border-[#C19A6B] bg-[#FFF8E7] py-2 px-7.5 rounded-xl text-[#6B5344] cursor-pointer hover:bg-[#F5E6D3] transition-all shadow-md hover:shadow-lg',
         className
       )}
       {...props}
@@ -103,7 +103,7 @@ const SectionDialog = ({
   return (
     <motion.div
       {...fadeUpMotionProps}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-[#382C30D6]"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-[#6B5344] bg-opacity-90"
       role="dialog"
       aria-modal="true"
       aria-label="Section Dialog"
@@ -115,7 +115,7 @@ const SectionDialog = ({
     >
       <div className="w-full h-full">
         <button
-          className="absolute top-4 right-4 z-50 w-11 h-11 text-[#ccc] text-2xl  bg-opacity-30 rounded-full cursor-pointer"
+          className="absolute top-4 right-4 z-50 w-12 h-12 text-[#C19A6B] text-3xl bg-[#FFF8E7] bg-opacity-80 hover:bg-opacity-100 rounded-full cursor-pointer shadow-lg transition-all flex items-center justify-center"
           tabIndex={0}
           aria-label="Đóng"
           onClick={(e) => {

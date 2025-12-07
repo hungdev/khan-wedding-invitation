@@ -8,11 +8,27 @@
   --font-gowun: var(--font-gowun-dodum);
   --font-noto: var(--font-noto-sans-kr);
   --font-ephesis: var(--font-ephesis);
+  --font-dancing: var(--font-dancing-script);
+  --font-parisienne: var(--font-parisienne);
+  --font-great-vibes: var(--font-great-vibes);
+  --font-alex-brush: var(--font-alex-brush);
 
-  --color-primary: #f79e9e;
+  /* Vintage Romantic Color Palette */
+  --color-primary: #d4a5a5;
+  --color-sepia: #d4a574;
+  --color-sepia-dark: #c19a6b;
+  --color-dusty-rose: #e8b4b8;
+  --color-cream: #f5e6d3;
+  --color-cream-light: #fff8e7;
+  --color-sage: #9ba77f;
+  --color-sage-light: #c7b8a1;
+  --color-vintage-brown: #8b7355;
+  --color-vintage-brown-dark: #6b5344;
+  --color-vintage-paper: #f4ecd8;
+  --color-vintage-ink: #4a3c32;
 
-  --color-highlight: rgb(247, 158, 158);
-  --color-secondary: rgb(84, 79, 79);
+  --color-highlight: #d4a5a5;
+  --color-secondary: #6b5344;
 }
 
 body {
@@ -37,11 +53,11 @@ body {
   .gradient-fade-up {
     background: linear-gradient(
       0deg,
-      rgba(250, 250, 250, 1) 0%,
-      rgba(250, 250, 250, 0.55) 60%,
-      rgba(250, 250, 250, 0.5) 73%,
-      rgba(250, 250, 250, 0.25) 83%,
-      rgba(250, 250, 250, 0) 100%
+      rgba(244, 236, 216, 1) 0%,
+      rgba(244, 236, 216, 0.55) 60%,
+      rgba(244, 236, 216, 0.5) 73%,
+      rgba(244, 236, 216, 0.25) 83%,
+      rgba(244, 236, 216, 0) 100%
     );
   }
 
@@ -59,5 +75,262 @@ body {
       transform: scale(1.8);
       opacity: 0.8;
     }
+  }
+
+  /* Vintage Paper Texture */
+  .vintage-paper {
+    background-color: #f4ecd8;
+    background-image:
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(139, 115, 85, 0.03) 2px,
+        rgba(139, 115, 85, 0.03) 4px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 2px,
+        rgba(139, 115, 85, 0.03) 2px,
+        rgba(139, 115, 85, 0.03) 4px
+      );
+    box-shadow: inset 0 0 50px rgba(139, 115, 85, 0.1);
+  }
+
+  /* Vintage Sepia Filter */
+  .vintage-sepia {
+    filter: sepia(0.3) contrast(1.1) brightness(1.05);
+  }
+
+  /* Polaroid Frame Effect */
+  .polaroid-frame {
+    background: #fff;
+    padding: 20px 10px 10px 10px;
+    box-shadow:
+      0 4px 8px rgba(0, 0, 0, 0.15),
+      0 1px 3px rgba(0, 0, 0, 0.1),
+      inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+    position: relative;
+  }
+
+  .polaroid-frame::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 36px;
+    background: linear-gradient(to bottom, #fff, #f8f8f8);
+  }
+
+  /* Torn Paper Edge Effect */
+  .torn-edge {
+    position: relative;
+  }
+
+  .torn-edge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background:
+      linear-gradient(
+        45deg,
+        transparent 33.33%,
+        #f4ecd8 33.33%,
+        #f4ecd8 66.66%,
+        transparent 66.66%
+      ),
+      linear-gradient(
+        -45deg,
+        transparent 33.33%,
+        #f4ecd8 33.33%,
+        #f4ecd8 66.66%,
+        transparent 66.66%
+      );
+    background-size: 8px 16px;
+    background-position:
+      0 0,
+      4px 0;
+  }
+
+  /* Vintage Photo Tilt */
+  .vintage-tilt-left {
+    transform: rotate(-2deg);
+    transition: transform 0.3s ease;
+  }
+
+  .vintage-tilt-right {
+    transform: rotate(2deg);
+    transition: transform 0.3s ease;
+  }
+
+  .vintage-tilt-left:hover,
+  .vintage-tilt-right:hover {
+    transform: rotate(0deg) scale(1.02);
+    z-index: 10;
+  }
+
+  /* Vintage Border Decorative */
+  .vintage-border {
+    border: 2px solid #c19a6b;
+    border-image: repeating-linear-gradient(
+        45deg,
+        #c19a6b,
+        #c19a6b 10px,
+        #d4a574 10px,
+        #d4a574 20px
+      )
+      2;
+    position: relative;
+  }
+
+  .vintage-border::before {
+    content: '✦';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #f4ecd8;
+    padding: 0 8px;
+    color: #c19a6b;
+    font-size: 16px;
+  }
+
+  /* Tape Effect */
+  .tape-effect {
+    position: relative;
+  }
+
+  .tape-effect::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-3deg);
+    width: 60px;
+    height: 20px;
+    background: rgba(255, 248, 231, 0.7);
+    border: 1px solid rgba(212, 165, 116, 0.3);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Vintage Vignette */
+  .vintage-vignette {
+    position: relative;
+  }
+
+  .vintage-vignette::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow:
+      inset 0 0 80px rgba(107, 83, 68, 0.4),
+      inset 0 0 40px rgba(107, 83, 68, 0.2);
+    pointer-events: none;
+  }
+
+  /* Lace Border Pattern */
+  .lace-border {
+    border: 3px solid transparent;
+    border-image: repeating-linear-gradient(
+        45deg,
+        #e8b4b8 0px,
+        #e8b4b8 2px,
+        transparent 2px,
+        transparent 4px,
+        #e8b4b8 4px
+      )
+      3;
+    padding: 8px;
+    background-color: #fff8e7;
+    background-clip: padding-box;
+  }
+
+  /* Handwritten Text Shadow */
+  .handwritten-shadow {
+    text-shadow:
+      2px 2px 4px rgba(107, 83, 68, 0.2),
+      1px 1px 0px rgba(212, 165, 116, 0.3);
+  }
+
+  /* Vintage Paper Clip */
+  .paper-clip {
+    position: relative;
+  }
+
+  .paper-clip::before {
+    content: '📎';
+    position: absolute;
+    top: -15px;
+    right: 10px;
+    font-size: 24px;
+    opacity: 0.6;
+    transform: rotate(45deg);
+  }
+
+  /* Scrapbook Sticker Effect */
+  .scrapbook-sticker {
+    position: relative;
+    padding: 20px;
+  }
+
+  .scrapbook-sticker::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(212, 165, 116, 0.1) 0%, transparent 70%);
+    border-radius: inherit;
+  }
+
+  /* Vintage Fade Animation */
+  .vintage-fade-in {
+    animation: vintageFadeIn 1.2s ease-out;
+  }
+
+  @keyframes vintageFadeIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.95);
+      filter: sepia(1) blur(2px);
+    }
+    50% {
+      filter: sepia(0.5) blur(1px);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+      filter: sepia(0.3) blur(0);
+    }
+  }
+
+  /* Wax Seal Effect */
+  .wax-seal {
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle, #d4a5a5 0%, #c19a6b 70%, #8b7355 100%);
+    border-radius: 50%;
+    box-shadow:
+      inset 0 -2px 4px rgba(0, 0, 0, 0.3),
+      0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+  }
+
+  .wax-seal::after {
+    content: '♥';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 28px;
+    font-weight: bold;
   }
 }

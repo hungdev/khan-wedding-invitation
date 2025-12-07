@@ -2,15 +2,19 @@ import { Data } from '@/models/model';
 import dayjs from 'dayjs';
 import 'dayjs/locale/vi';
 import Picture from '../ui/picture';
+import VintageFrame from '../ui/VintageFrame';
+import VintageDecorations from '../ui/VintageDecorations';
 
 export default function MainSection({ meta, weddingDates, families, images }: Data) {
   const groom = families.find((p) => p.gender === 'groom' && p.relation === 'self');
   const bride = families.find((p) => p.gender === 'bride' && p.relation === 'self');
 
   return (
-    <section>
-      <div className="flex flex-col items-center font-crimson gap-1 text-[#49413a]">
-        <h1 className="text-[30px] tracking-[-0.2]">
+    <section className="px-4 pt-8">
+      <VintageDecorations type="floral" className="mb-8" />
+      
+      <div className="flex flex-col items-center gap-3 text-[#6B5344] mb-8">
+        <h1 className="font-crimson text-2xl tracking-wide text-[#8B7355]">
           {weddingDates.map((weddingDate, index) => {
             const { year, month, day } = weddingDate;
             const marryDate = dayjs(`${year}/${month}/${day}`, 'YYYY/MM/DD');
@@ -22,7 +26,7 @@ export default function MainSection({ meta, weddingDates, families, images }: Da
             );
           })}
         </h1>
-        <p className="text-base uppercase tracking-[2px]">
+        <p className="font-gowun text-sm uppercase tracking-[3px] text-[#C19A6B] opacity-80">
           {weddingDates.map((weddingDate, index) => {
             const { year, month, day, time } = weddingDate;
             const marryDate = dayjs(
@@ -38,29 +42,46 @@ export default function MainSection({ meta, weddingDates, families, images }: Da
             );
           })}
         </p>
-        <p className="text-sm text-[#666] mt-2 normal-case tracking-[0px]">
+        <p className="font-crimson text-xs text-[#9BA77F] italic mt-1">
           (Tức ngày mùng 1, mùng 2 tháng 11 năm Ất Tỵ)
         </p>
       </div>
-      <div className="my-15">
-        <Picture
-          src={images.main}
-          alt="Ảnh chính"
-          className="rounded-2xl w-[425px] h-[585px] object-cover object-bottom"
-          width={425}
-          height={585}
-        />
+
+      <VintageDecorations type="divider" />
+
+      <div className="my-10 flex justify-center vintage-fade-in">
+        <VintageFrame variant="polaroid" className="max-w-full">
+          <Picture
+            src={images.main}
+            alt="Ảnh cưới chính"
+            className="w-full max-w-[380px] h-[520px] object-cover object-bottom"
+            width={380}
+            height={520}
+          />
+        </VintageFrame>
       </div>
-      <div className="flex flex-col items-center gap-y-5 font-gowun">
-        <div className="flex flex-row gap-2.5 text-lg tracking-[1]">
-          <span>{groom?.name}</span>
-          <span>·</span>
-          <span>{bride?.name}</span>
+
+      <VintageDecorations type="divider" />
+
+      <div className="flex flex-col items-center gap-y-6 mt-8 mb-4">
+        <div className="flex flex-row gap-3 items-center flex-wrap justify-center px-4">
+          <span className="font-ephesis text-3xl sm:text-4xl text-[#8B7355] handwritten-shadow">
+            {groom?.name}
+          </span>
+          <span className="text-[#D4A5A5] text-2xl sm:text-3xl">❦</span>
+          <span className="font-ephesis text-3xl sm:text-4xl text-[#8B7355] handwritten-shadow">
+            {bride?.name}
+          </span>
         </div>
-        <p className="whitespace-pre text-center text-base text-[#544f4f] leading-7">
+        
+        <VintageDecorations type="heart" className="my-4" />
+        
+        <p className="whitespace-pre text-center text-sm font-crimson text-[#6B5344] leading-7 max-w-md px-4 italic">
           {meta.description}
         </p>
       </div>
+
+      <VintageDecorations type="floral" className="mt-8 mb-4" />
     </section>
   );
 }

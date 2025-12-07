@@ -3,6 +3,8 @@ import { Section } from '../Section'
 import classNames from 'classnames'
 import { Gallery } from '@/models/model'
 import Picture from '../ui/picture'
+import VintageFrame from '../ui/VintageFrame'
+import VintageDecorations from '../ui/VintageDecorations'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination, Keyboard } from 'swiper/modules'
 import { motion } from 'framer-motion'
@@ -56,51 +58,77 @@ export default function GalleryMasonry({ images }: { images: Gallery[] }) {
   }
 
   return (
-    <Section.Container fadeUp className="px-2">
-      <h1 className="text-center mb-7.5">
-        <p className="font-crimson text-[13px] text-[#f79e9e] tracking-[3px] opacity-60">
-          GALLERY
+    <Section.Container fadeUp className="px-4 relative">
+      <VintageDecorations type="corner" className="top-0 left-0" />
+      <VintageDecorations type="corner" className="top-0 right-0 rotate-90" />
+      
+      <div className="text-center mb-8 vintage-fade-in">
+        <h2 className="font-dancing text-5xl text-[#8B7355] mb-2 handwritten-shadow">
+          Gallery
+        </h2>
+        <p className="font-gowun text-sm text-[#6B5344] tracking-[4px] opacity-70">
+          ALBUM ẢNH CƯỚI
         </p>
-        <p className="text-[#f79e9e] text-xl mt-1 font-gowun">Album ảnh cưới</p>
-      </h1>
+      </div>
+
+      <VintageDecorations type="floral" className="mb-6" />
 
       <motion.div
-        className="grid grid-cols-3 gap-1.5"
+        className="grid grid-cols-3 gap-2 sm:gap-3"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.1 }}
       >
-        {images.map((image, imageIndex) => (
-          <motion.div
-            key={image.src}
-            variants={itemVariants}
-            whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ duration: 0.4 }}
-          >
-            <Picture
-              onImageClick={() => handleImageClick(image.src, imageIndex)}
-              src={image.src}
-              alt={`Ảnh cưới thứ ${imageIndex + 1} trong bộ sưu tập`}
-              width={125}
-              height={125}
-              className={classNames(
-                'w-[125px] h-[125px] object-cover rounded cursor-pointer',
-                image.position
-              )}
-            />
-          </motion.div>
-        ))}
+        {images.map((image, imageIndex) => {
+          const tiltOptions = ['left', 'right', 'none'] as const
+          const randomTilt = tiltOptions[imageIndex % 3]
+          const variantOptions = ['simple', 'tape', 'simple'] as const
+          const randomVariant = variantOptions[imageIndex % 3]
+
+          return (
+            <motion.div
+              key={image.src}
+              variants={itemVariants}
+              whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ duration: 0.4 }}
+            >
+              <VintageFrame 
+                variant={randomVariant} 
+                tilt={randomTilt}
+                className="cursor-pointer"
+              >
+                <Picture
+                  onImageClick={() => handleImageClick(image.src, imageIndex)}
+                  src={image.src}
+                  alt={`Ảnh cưới thứ ${imageIndex + 1} trong bộ sưu tập`}
+                  width={105}
+                  height={105}
+                  className={classNames(
+                    'w-[105px] h-[105px] object-cover',
+                    image.position
+                  )}
+                />
+              </VintageFrame>
+            </motion.div>
+          )
+        })}
       </motion.div>
+
+      <VintageDecorations type="divider" className="mt-8" />
+      
+      <VintageDecorations type="corner" className="bottom-0 left-0 rotate-[-90deg]" />
+      <VintageDecorations type="corner" className="bottom-0 right-0 rotate-180" />
 
       <Section.Dialog isOpen={Boolean(selectedImg)} onClose={handleClose}>
         <div
-          className="w-full h-full z-10"
+          className="w-full h-full z-10 vintage-paper"
           onClick={(e) => e.stopPropagation()}
           style={
             {
-              '--swiper-pagination-fraction-color': 'white',
+              '--swiper-pagination-fraction-color': '#8B7355',
+              '--swiper-navigation-color': '#8B7355',
             } as React.CSSProperties
           }
         >
