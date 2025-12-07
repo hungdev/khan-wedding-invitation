@@ -100,7 +100,7 @@ body {
 
   /* Vintage Sepia Filter */
   .vintage-sepia {
-    filter: sepia(0.3) contrast(1.1) brightness(1.05);
+    filter: sepia(0.2) contrast(1.05) brightness(1.02);
   }
 
   /* Polaroid Frame Effect */

@@ -14,7 +14,7 @@ export default function MainSection({ meta, weddingDates, families, images }: Da
       <VintageDecorations type="floral" className="mb-8" />
       
       <div className="flex flex-col items-center gap-3 text-[#6B5344] mb-8">
-        <h1 className="font-crimson text-2xl tracking-wide text-[#8B7355]">
+        <h1 className="font-crimson text-xl sm:text-2xl tracking-wide text-[#8B7355] text-center">
           {weddingDates.map((weddingDate, index) => {
             const { year, month, day } = weddingDate;
             const marryDate = dayjs(`${year}/${month}/${day}`, 'YYYY/MM/DD');
@@ -26,7 +26,7 @@ export default function MainSection({ meta, weddingDates, families, images }: Da
             );
           })}
         </h1>
-        <p className="font-gowun text-sm uppercase tracking-[3px] text-[#C19A6B] opacity-80">
+        <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-1 font-gowun text-xs sm:text-sm uppercase text-[#C19A6B] opacity-80">
           {weddingDates.map((weddingDate, index) => {
             const { year, month, day, time } = weddingDate;
             const marryDate = dayjs(
@@ -34,15 +34,15 @@ export default function MainSection({ meta, weddingDates, families, images }: Da
               'YYYY/MM/DD hh:mm'
             );
             return (
-              <span key={index}>
+              <span key={index} className="whitespace-nowrap tracking-[1px] sm:tracking-[2px]">
                 {marryDate.locale('vi').format('dddd')} {marryDate.format('hh:mm')}{' '}
                 {time.amPm.toUpperCase()}
-                {index < weddingDates.length - 1 && ' - '}
+                {index < weddingDates.length - 1 && <span className="hidden sm:inline"> - </span>}
               </span>
             );
           })}
-        </p>
-        <p className="font-crimson text-xs text-[#9BA77F] italic mt-1">
+        </div>
+        <p className="font-crimson text-xs text-[#9BA77F] italic mt-1 text-center">
           (Tức ngày mùng 1, mùng 2 tháng 11 năm Ất Tỵ)
         </p>
       </div>
