@@ -9,7 +9,7 @@ export default function AccountSection({ families }: { families: Person[] }) {
   const title = 'Gửi tặng đến chúng tôi';
   const content = `
     Dành cho quý khách không thể tham dự, 
-    chúng tôi xin được gửi thông tin tài khoản để thuận tiện cho việc chúc phúc. Rất mong nhận được sự thông cảm và lời chúc yêu thương từ quý vị.
+    bên dưới là thông tin nhận quà để thuận tiện cho việc chúc phúc. Rất mong nhận được sự thông cảm và lời chúc yêu thương từ quý vị.
   `;
   const { groomFamily, brideFamily } = {
     groomFamily: families.filter((person) => person.gender === 'groom'),
