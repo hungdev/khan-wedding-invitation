@@ -92,10 +92,10 @@ export default function IntroSection({
               Nhà Trai
             </h3>
             <div className="space-y-1 mb-2 h-[52px] sm:h-[46px] flex flex-col justify-start pt-1">
-              <p className="text-[10px] sm:text-[11px] font-gowun tracking-wider text-[#6B5344] opacity-80 leading-tight">
+              <p className="text-[11px] sm:text-[12px] font-gowun tracking-wider text-[#6B5344] opacity-80 leading-tight">
                 Ông {groomFather?.name}
               </p>
-              <p className="text-[10px] sm:text-[11px] font-gowun tracking-wider text-[#6B5344] opacity-80 leading-tight">
+              <p className="text-[11px] sm:text-[12px] font-gowun tracking-wider text-[#6B5344] opacity-80 leading-tight">
                 Bà {groomMother?.name}
               </p>
             </div>
@@ -123,10 +123,10 @@ export default function IntroSection({
               Nhà Gái
             </h3>
             <div className="space-y-1 mb-2 h-[52px] sm:h-[46px] flex flex-col justify-start pt-1">
-              <p className="text-[10px] sm:text-[11px] font-gowun tracking-wider text-[#6B5344] opacity-80 leading-tight">
+              <p className="text-[11px] sm:text-[12px] font-gowun tracking-wider text-[#6B5344] opacity-80 leading-tight">
                 Ông {brideFather?.name}
               </p>
-              <p className="text-[10px] sm:text-[11px] font-gowun tracking-wider text-[#6B5344] opacity-80 leading-tight">
+              <p className="text-[11px] sm:text-[12px] font-gowun tracking-wider text-[#6B5344] opacity-80 leading-tight">
                 Bà {brideMother?.name}
               </p>
             </div>
