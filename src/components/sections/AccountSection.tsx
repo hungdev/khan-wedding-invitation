@@ -22,9 +22,7 @@ export default function AccountSection({ families }: { families: Person[] }) {
       <VintageDecorations type="corner" className="top-0 right-0 rotate-90" />
 
       <div className="text-center mb-6 vintage-fade-in">
-        <h2 className="font-dancing text-5xl text-[#8B7355] mb-2 handwritten-shadow">
-          Wishes
-        </h2>
+        <h2 className="font-dancing text-5xl text-[#8B7355] mb-2 handwritten-shadow">Wishes</h2>
         <p className="font-gowun text-sm text-[#6B5344] tracking-[4px] opacity-70">
           GỬI TẶNG ĐẾN CHÚNG TÔI
         </p>
@@ -41,7 +39,7 @@ export default function AccountSection({ families }: { families: Person[] }) {
       <div className="flex flex-col gap-10 mt-8">
         <details className="shadow-xl rounded-xl w-[320px] mx-auto group text-base lace-border vintage-vignette">
           <summary className="font-ephesis text-2xl rounded-t-xl font-medium tracking-wide text-center list-none bg-[#FFF8E7] px-5 h-[60px] flex items-center justify-center text-[#8B7355] handwritten-shadow cursor-pointer hover:bg-[#F5E6D3] transition-all">
-            <p className="flex-1">Tài khoản chú rể</p>
+            <p className="flex-1">Quà mừng cưới</p>
             <IoIosArrowDown
               className={classNames('w-5 h-5 transition-transform', 'group-open:rotate-180')}
               color="#C19A6B"
@@ -63,10 +61,14 @@ export default function AccountSection({ families }: { families: Person[] }) {
                   }}
                 >
                   <div className="flex flex-col gap-y-2 cursor-pointer flex-1 text-left">
-                    <p className="font-ephesis text-lg sm:text-xl text-[#8B7355]">Nguyễn Văn Khẩn</p>
+                    <p className="font-ephesis text-lg sm:text-xl text-[#8B7355]">
+                      Nguyễn Văn Khẩn
+                    </p>
                     <div className="flex flex-col gap-y-1">
                       <p className="text-xs text-[#C19A6B]">{account.bank}</p>
-                      <p className="text-xs sm:text-sm font-medium text-[#6B5344]">{account.accountNumber}</p>
+                      <p className="text-xs sm:text-sm font-medium text-[#6B5344]">
+                        {account.accountNumber}
+                      </p>
                     </div>
                   </div>
                   <div className="flex items-center">
@@ -75,14 +77,18 @@ export default function AccountSection({ families }: { families: Person[] }) {
                 </button>
               ))}
             <div className="p-6">
-              <img src="/images/bank.png" alt="Bank QR Code" className="w-full h-auto rounded-lg vintage-vignette" />
+              <img
+                src="/images/bank.png"
+                alt="Bank QR Code"
+                className="w-full h-auto rounded-lg vintage-vignette"
+              />
             </div>
           </div>
         </details>
       </div>
 
       <VintageDecorations type="seal" className="mt-8" />
-      
+
       <VintageDecorations type="corner" className="bottom-0 left-0 rotate-[-90deg]" />
       <VintageDecorations type="corner" className="bottom-0 right-0 rotate-180" />
     </Section.Container>
