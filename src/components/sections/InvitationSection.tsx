@@ -85,57 +85,57 @@ export default function IntroSection({
       <div className="w-full max-w-md mx-auto py-6 mt-6 mb-4 lace-border scrapbook-sticker">
         <VintageDecorations type="floral" className="mb-4" />
         
-        <div className="flex flex-col sm:flex-row justify-center items-center sm:items-start gap-4 sm:gap-6 px-3">
+        <div className="flex flex-row justify-center items-start gap-2 sm:gap-6 px-2 sm:px-3">
           {/* Nhà Trai */}
-          <div className="flex-1 w-full flex flex-col items-center text-center space-y-2">
-            <h3 className="font-ephesis text-3xl tracking-wide mb-2 text-[#8B7355] handwritten-shadow">
+          <div className="flex-1 w-full flex flex-col items-center text-center">
+            <h3 className="font-ephesis text-2xl sm:text-3xl tracking-wide mb-2 text-[#8B7355] handwritten-shadow">
               Nhà Trai
             </h3>
-            <div className="space-y-1">
-              <p className="text-[11px] font-gowun tracking-wider text-[#6B5344] opacity-80">
+            <div className="space-y-1 mb-2 h-[52px] sm:h-[46px] flex flex-col justify-start pt-1">
+              <p className="text-[10px] sm:text-[11px] font-gowun tracking-wider text-[#6B5344] opacity-80 leading-tight">
                 Ông {groomFather?.name}
               </p>
-              <p className="text-[11px] font-gowun tracking-wider text-[#6B5344] opacity-80">
+              <p className="text-[10px] sm:text-[11px] font-gowun tracking-wider text-[#6B5344] opacity-80 leading-tight">
                 Bà {groomMother?.name}
               </p>
             </div>
-            <VintageDecorations type="divider" className="w-20 my-2" />
+            <VintageDecorations type="divider" className="w-16 sm:w-20 my-2" />
             <div className="pt-1">
-              <p className="text-[10px] font-crimson text-[#C19A6B] tracking-[2px] uppercase">
+              <p className="text-[9px] sm:text-[10px] font-crimson text-[#C19A6B] tracking-[2px] uppercase">
                 Chú Rể
               </p>
-              <p className="text-2xl sm:text-3xl font-ephesis mt-1 text-[#8B7355] handwritten-shadow">
+              <p className="text-xl sm:text-2xl md:text-3xl font-ephesis mt-1 text-[#8B7355] handwritten-shadow">
                 {groomSelf?.name}
               </p>
             </div>
           </div>
 
           {/* Heart Icon với vintage style */}
-          <div className="flex items-center justify-center px-2 py-4 sm:pt-12">
-            <div className="relative scale-75 sm:scale-100">
+          <div className="flex items-center justify-center px-1 sm:px-2 pt-12">
+            <div className="relative scale-[0.6] sm:scale-75 md:scale-100">
               <VintageDecorations type="seal" />
             </div>
           </div>
 
           {/* Nhà Gái */}
-          <div className="flex-1 w-full flex flex-col items-center text-center space-y-2">
-            <h3 className="font-ephesis text-3xl tracking-wide mb-2 text-[#8B7355] handwritten-shadow">
+          <div className="flex-1 w-full flex flex-col items-center text-center">
+            <h3 className="font-ephesis text-2xl sm:text-3xl tracking-wide mb-2 text-[#8B7355] handwritten-shadow">
               Nhà Gái
             </h3>
-            <div className="space-y-1">
-              <p className="text-[11px] font-gowun tracking-wider text-[#6B5344] opacity-80">
+            <div className="space-y-1 mb-2 h-[52px] sm:h-[46px] flex flex-col justify-start pt-1">
+              <p className="text-[10px] sm:text-[11px] font-gowun tracking-wider text-[#6B5344] opacity-80 leading-tight">
                 Ông {brideFather?.name}
               </p>
-              <p className="text-[11px] font-gowun tracking-wider text-[#6B5344] opacity-80">
+              <p className="text-[10px] sm:text-[11px] font-gowun tracking-wider text-[#6B5344] opacity-80 leading-tight">
                 Bà {brideMother?.name}
               </p>
             </div>
-            <VintageDecorations type="divider" className="w-20 my-2" />
+            <VintageDecorations type="divider" className="w-16 sm:w-20 my-2" />
             <div className="pt-1">
-              <p className="text-[10px] font-crimson text-[#C19A6B] tracking-[2px] uppercase">
+              <p className="text-[9px] sm:text-[10px] font-crimson text-[#C19A6B] tracking-[2px] uppercase">
                 Cô Dâu
               </p>
-              <p className="text-2xl sm:text-3xl font-ephesis mt-1 text-[#8B7355] handwritten-shadow">
+              <p className="text-xl sm:text-2xl md:text-3xl font-ephesis mt-1 text-[#8B7355] handwritten-shadow">
                 {brideSelf?.name}
               </p>
             </div>
