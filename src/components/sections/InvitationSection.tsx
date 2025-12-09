@@ -173,25 +173,25 @@ export default function IntroSection({
           <div className="mt-8 font-gowun text-sm w-full max-w-sm px-4 sm:px-6">
             <div className="lace-border p-4 sm:p-6 mb-6">
               <p className="font-ephesis text-2xl sm:text-3xl text-[#8B7355] mb-4 handwritten-shadow">
-                Phía chú rể
+                Phía cô dâu
               </p>
               <ul>
                 <li className="my-4 sm:my-6 flex items-center gap-3 sm:gap-4">
                   <div className="flex-1 text-start">
-                    <p className="text-[10px] sm:text-xs text-[#C19A6B] uppercase tracking-wider mb-1">Chú rể</p>
+                    <p className="text-[10px] sm:text-xs text-[#C19A6B] uppercase tracking-wider mb-1">Cô dâu</p>
                     <p className="text-base sm:text-lg font-ephesis text-[#6B5344]">
-                      {groomSelf?.name}
+                      {brideSelf?.name}
                     </p>
                   </div>
                   <div className="flex gap-x-4">
                     <a 
-                      href={`tel:${groomSelf?.phone}`}
+                      href={`tel:${brideSelf?.phone}`}
                       className="w-10 h-10 rounded-full bg-[#E8B4B8] bg-opacity-30 flex items-center justify-center hover:bg-opacity-50 transition-all"
                     >
                       <IoIosCall size={20} className="text-[#8B7355]" />
                     </a>
                     <a 
-                      href={`sms:${groomSelf?.phone}`}
+                      href={`sms:${brideSelf?.phone}`}
                       className="w-10 h-10 rounded-full bg-[#E8B4B8] bg-opacity-30 flex items-center justify-center hover:bg-opacity-50 transition-all"
                     >
                       <IoIosMail size={20} className="text-[#8B7355]" />

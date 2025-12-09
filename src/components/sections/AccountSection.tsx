@@ -46,7 +46,7 @@ export default function AccountSection({ families }: { families: Person[] }) {
             />
           </summary>
           <div className="font-gowun text-sm text-[#6B5344] bg-[#FFF8E7] bg-opacity-50">
-            {groomFamily
+            {brideFamily
               .filter((person) => person.relation === 'self')
               .map(({ account, name }, idx) => (
                 <button
@@ -62,7 +62,7 @@ export default function AccountSection({ families }: { families: Person[] }) {
                 >
                   <div className="flex flex-col gap-y-2 cursor-pointer flex-1 text-left">
                     <p className="font-ephesis text-lg sm:text-xl text-[#8B7355]">
-                      Nguyễn Văn Khẩn
+                      Nguyễn Thị Trang
                     </p>
                     <div className="flex flex-col gap-y-1">
                       <p className="text-xs text-[#C19A6B]">{account.bank}</p>
@@ -78,7 +78,7 @@ export default function AccountSection({ families }: { families: Person[] }) {
               ))}
             <div className="p-6">
               <img
-                src="/images/bank.png"
+                src="/images/bride-bank.png"
                 alt="Bank QR Code"
                 className="w-full h-auto rounded-lg vintage-vignette"
               />

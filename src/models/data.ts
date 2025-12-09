@@ -8,7 +8,7 @@ export default {
   meta: {
     title: 'Nguyễn Khẩn & Nguyễn Trang wedding invitation',
     description:
-      'Thứ Bảy, 20/12/2025, lúc 5 giờ chiều\nChủ nhật, 21/12/2025, lúc 8 giờ 30 phút sáng\nTại Thôn Đụn, Xã Nam Sách, Hải Phòng',
+      'Thứ Bảy, 20/12/2025, lúc 5 giờ chiều\nChủ nhật, 21/12/2025, lúc 8 giờ 30 phút sáng\nTại Thôn An Điền Xuân, Nam Sách, Hải Phòng',
     url: 'https://khan-wedding-invitation.vercel.app',
     thumbnail: mapperBuildPath('/images/thumbnail.png'),
   },
@@ -72,10 +72,10 @@ export default {
       gender: 'bride',
       name: 'Nguyễn Trang',
       relation: 'self',
-      phone: '',
+      phone: '0974139417',
       account: {
-        bank: '',
-        accountNumber: '',
+        bank: 'Vietcombank',
+        accountNumber: '0231000600440',
         bankIdentity: 'Nguyễn Trang',
       },
     },
@@ -150,14 +150,14 @@ export default {
   })),
   map: {
     name: 'Tại nhà',
-    address: 'Thôn Đụn, Xã Nam Sách, Hải Phòng',
-    addressDetail: 'Thôn Đụn, Xã Nam Sách, Hải Phòng',
-    tel: '0398128389',
+    address: 'Thôn An Điền Xuân, Nam Sách, Hải Phòng',
+    addressDetail: 'Thôn An Điền Xuân, Nam Sách, Hải Phòng',
+    tel: '0974139417',
     position: {
-      latitude: 21.0001417,
-      longitude: 106.3228353,
+      latitude: 21.009258270263672,
+      longitude: 106.39095306396484,
     },
-    link: 'https://www.google.com/maps/place/21%C2%B000\'00.5%22N+106%C2%B019\'22.2%22E/@20.9994506,106.3222452,17z/data=!4m4!3m3!8m2!3d21.0001417!4d106.3228353?entry=ttu&g_ep=EgoyMDI1MTIwMi4wIKXMDSoASAFQAw%3D%3D',
+    link: 'https://www.google.com/maps?q=21.009258270263672,106.39095306396484&z=14&t=m&mapclient=embed',
   },
   bgm: mapperBuildPath('/music/wedding-bgm.mp3'),
 } satisfies Data;
